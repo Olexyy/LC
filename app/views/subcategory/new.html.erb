@@ -1,0 +1,17 @@
+<h1>Add new</h1>
+
+<%= form_tag :action => 'create' do |e| %>
+    <p><label for = "category_name">Name</label>:
+      <%= text_field :subcategory, :name %></p>
+
+    <p><label for = "subcategory_category_id">Category</label>:
+      <%= collection_select(:subcategory, :category_id, @categories, :id, :name, prompt: true) %></p>
+
+    <p><label for = "category_weight">Weight</label>:
+      <%= number_field :subcategory, :weight %></p>
+
+    <%= submit_tag 'Create' %>
+
+<% end -%>
+
+<%= link_to 'Back', {:action => 'list'} %>

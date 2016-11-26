@@ -1,0 +1,14 @@
+<% if @subcategories.blank? %>
+<p>There are no subcategories in list.</p>
+<% else %>
+
+<p>Current subcategories:</p>
+
+<ul id = "subcategories">
+   <% @subcategories.each do |c| %>
+   <li><%= link_to c.name, {:action => 'show', :id => c.id} -%></li>
+   <% end %>
+</ul>
+
+<% end %>
+<%= lower_menu ({:Add_new => 'new'}) %>

@@ -1,0 +1,9 @@
+<h1><%= @subcategory.name %></h1>
+
+<p>
+  <strong>Name: </strong> <%= @subcategory.name %><br />
+  <strong>Category: </strong> <%= @subcategory.category.name %><br />
+  <strong>Weight: </strong> <%= @subcategory.weight %><br />
+</p>
+
+<%= lower_menu ({:Edit => 'edit%'+@subcategory.id.to_s, :Delete => 'delete%'+@subcategory.id.to_s, :Back => 'list'}) %>

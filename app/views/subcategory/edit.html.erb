@@ -1,0 +1,14 @@
+<h1>Edit Subcategory</h1>
+
+<%= form_for @subcategory, :url =>{:action => 'update', :id =>@subcategory} do |f| %>
+
+    <p>Name: <%= f.text_field 'name' %></p>
+    <p>Category:
+      <%= f.collection_select(:category_id, @categories, :id, :name, prompt: true) %>
+    </p>
+    <p>Weight: <%= f.text_field  'weight' %></p>
+
+    <%= f.submit 'Save changes' %>
+<% end %>
+
+<%= lower_menu ({:Back => 'list' }) %>
