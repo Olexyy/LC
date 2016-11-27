@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-  layout 'standard'
 
   def index
     @categories = Category.all
@@ -37,7 +36,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     Category.find(params[:id]).destroy
-    redirect_to :action => 'list'
+    redirect_to :action => 'index'
   end
 
   def category_params

@@ -1,7 +1,6 @@
 class SubcategoriesController < ApplicationController
-  layout 'standard'
 
-  def list
+  def index
     @subcategories = Subcategory.all
   end
 
@@ -15,9 +14,9 @@ class SubcategoriesController < ApplicationController
   end
 
   def create
-    @subcategory = Subcategory.new(subcategories_params)
+    @subcategory = Subcategory.new(subcategory_params)
     if @subcategory.save
-      redirect_to :action => 'list'
+      redirect_to :action => 'index'
     else
       render :action => 'new'
     end
@@ -30,7 +29,7 @@ class SubcategoriesController < ApplicationController
 
   def update
     @subcategory = Subcategory.find(params[:id])
-    if @subcategory.update_attributes(subcategories_params)
+    if @subcategory.update_attributes(subcategory_params)
       redirect_to :action => 'show', :id => @subcategory
     else
       render :action => 'edit'
@@ -39,10 +38,10 @@ class SubcategoriesController < ApplicationController
 
   def delete
     Subcategory.find(params[:id]).destroy
-    redirect_to :action => 'list'
+    redirect_to :action => 'index'
   end
 
-  def subcategories_params
-    params.require(:subcategories).permit(:name, :weight, :category_id)
+  def subcategory_params
+    params.require(:subcategory).permit(:name, :weight, :category_id)
   end
 end

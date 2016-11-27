@@ -1,16 +1,16 @@
 <h1>Add new</h1>
 
-<%= form_tag :action => 'create' do |e| %>
+<%= form_for @subcategory, :url => {:action => 'create'} do |e| %>
     <p><label for = "category_name">Name</label>:
-      <%= text_field :subcategories, :name %></p>
+      <%= e.text_field :name %></p>
 
     <p><label for = "subcategory_category_id">Category</label>:
-      <%= collection_select(:subcategories, :category_id, @categories, :id, :name, prompt: true) %></p>
+      <%= e.collection_select( :category_id, @categories, :id, :name, prompt: true) %></p>
 
     <p><label for = "category_weight">Weight</label>:
-      <%= number_field :subcategories, :weight %></p>
+      <%= e.number_field :weight %></p>
 
-    <%= submit_tag 'Create' %>
+    <%= e.submit 'Create' %>
 
 <% end -%>
 
