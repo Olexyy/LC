@@ -1,7 +1,7 @@
-class CategoryController < ApplicationController
+class CategoriesController < ApplicationController
   layout 'standard'
 
-  def list
+  def index
     @categories = Category.all
   end
 
@@ -16,7 +16,7 @@ class CategoryController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to :action => 'list'
+      redirect_to :action => 'index'
     else
       render :action => 'new'
     end
@@ -35,7 +35,7 @@ class CategoryController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     Category.find(params[:id]).destroy
     redirect_to :action => 'list'
   end

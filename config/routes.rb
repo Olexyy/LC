@@ -1,24 +1,5 @@
 Rails.application.routes.draw do
    get '', to: 'home#index'
-   get 'home/index'
-   get 'category/list'
-   get 'category/new'
-   post 'category/create'
-   patch 'category/update'
-   get 'category/list'
-   get 'category/show'
-   get 'category/edit'
-   get 'category/delete'
-   get 'category/update'
-   get 'category/show_subjects'
-   get 'subcategory/list'
-   get 'subcategory/new'
-   post 'subcategory/create'
-   patch 'subcategory/update'
-   get 'subcategory/list'
-   get 'subcategory/show'
-   get 'subcategory/edit'
-   get 'subcategory/delete'
-   get 'subcategory/update'
-   get 'subcategory/show_subjects'
+   resources :categories
+   resources :subcategories
 end
