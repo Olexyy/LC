@@ -41,12 +41,9 @@
 
   <!-- Begin page content -->
   <div class="container">
-    <div class="alert alert-danger" role="alert">
-      <strong>Error message example.</strong>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
+    <% if @flash.any? %>
+      <%= render :partial => '/layouts/message' %>
+         <% end %>
     <!-- Views go here -->
     <%= yield %>
   </div>
