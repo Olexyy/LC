@@ -1,17 +1,32 @@
-<h1>Add new</h1>
-
-<%= form_for @subcategory, :url => {:action => 'create'} do |e| %>
+<div class="row">
+  <div class="page-header col-sm-12">
+    <h1>Add new</h1>
+  </div>
+</div>
+<%= form_for @subcategory, :url => {:action => 'create'} do |f| %>
+<div class="row">
+  <div class="col-sm-6 item-list">
     <p><label for = "category_name">Name</label>:
-      <%= e.text_field :name %></p>
-
+      <%= f.text_field :name %></p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6 item-list">
     <p><label for = "subcategory_category_id">Category</label>:
-      <%= e.collection_select( :category_id, @categories, :id, :name, prompt: true) %></p>
-
+      <%= f.collection_select( :category_id, @categories, :id, :name, prompt: true) %></p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6 item-list">
     <p><label for = "category_weight">Weight</label>:
-      <%= e.number_field :weight %></p>
-
-    <%= e.submit 'Create' %>
-
+      <%= f.number_field :weight %></p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6 item-list">
+    <%= f.submit 'Create' %>
+  </div>
+</div>
 <% end -%>
 
-<%= link_to 'Back', {:action => 'index'} %>
+<%= render :partial => '/layouts/menu', :locals => {:links => {:Back => 'index'} } %>

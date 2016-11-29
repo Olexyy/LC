@@ -1,8 +1,17 @@
-<h1><%= @category.name %></h1>
+<div class="row">
+  <div class="page-header col-sm-12">
+    <h1><%= @category.name %></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6 item-list">
+    <p><strong>Name: </strong> <%= @category.name %></p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6 item-list">
+  <p><strong>Weight: </strong> <%= @category.weight %></p>
+  </div>
+</div>
 
-<p>
-  <strong>Name: </strong> <%= @category.name %><br />
-  <strong>Weight: </strong> <%= @category.weight %><br />
-</p>
-
-<%= lower_menu ({:Edit => 'edit%'+@category.id.to_s, :Delete => 'destroy%'+@category.id.to_s, :Back => 'index'}) %>
+<%= render :partial => '/layouts/menu', :locals => {:links => {:Edit => "edit%#{@category.id.to_s}", :Delete => "destroy%#{@category.id.to_s}", :Back => 'index'} } %>
