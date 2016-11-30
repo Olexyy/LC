@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-  layout 'application'
 
 	def index
     @messages[:danger] = 'Alert message example'
