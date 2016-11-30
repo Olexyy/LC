@@ -1,4 +1,4 @@
-<% if @messages.any? %>
+<% unless @messages.nil? %>
   <%  @messages.each do | key, value | %>
     <div class="row">
       <div class="col-sm-12">

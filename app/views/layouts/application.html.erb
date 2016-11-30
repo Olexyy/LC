@@ -41,9 +41,8 @@
 
   <!-- Begin page content -->
   <div class="container">
-    <% if @flash.any? %>
-      <%= render :partial => '/layouts/message' %>
-         <% end %>
+    <!-- System messages go here -->
+    <%= render :partial => '/layouts/messages' %>
     <!-- Views go here -->
     <%= yield %>
   </div>

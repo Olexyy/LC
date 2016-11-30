@@ -4,4 +4,8 @@ class ApplicationController < ActionController::Base
   helper ApplicationHelper
   layout 'application'
 
+  def initialize
+    super
+    @messages ||= {}
+  end
 end
