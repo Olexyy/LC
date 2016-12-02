@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @lawsuit.name %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @lawsuit.weight %>
+</p>
+
+<p>
+  <strong>Subcategory:</strong>
+  <%= @lawsuit.subcategory_id %>
+</p>
+
+<p>
+  <strong>Webresource:</strong>
+  <%= @lawsuit.webresource_id %>
+</p>
+
+<%= link_to 'Edit', edit_lawsuit_path(@lawsuit) %> |
+<%= link_to 'Back', lawsuits_path %>

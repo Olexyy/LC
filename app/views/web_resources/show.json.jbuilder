@@ -1,0 +1,1 @@
+json.partial! "web_resources/web_resource", web_resource: @web_resource

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  weight: 1
+  subcategory_id: one
+  webresource_id: one
+
+two:
+  name: MyString
+  weight: 1
+  subcategory_id: two
+  webresource_id: two

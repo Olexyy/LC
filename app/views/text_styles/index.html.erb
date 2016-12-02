@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Text Styles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Weight</th>
+      <th>Tag</th>
+      <th>Margin left</th>
+      <th>Text align</th>
+      <th>Strong</th>
+      <th>Underline</th>
+      <th>Italic</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @text_styles.each do |text_style| %>
+      <tr>
+        <td><%= text_style.name %></td>
+        <td><%= text_style.weight %></td>
+        <td><%= text_style.tag %></td>
+        <td><%= text_style.margin_left %></td>
+        <td><%= text_style.text_align %></td>
+        <td><%= text_style.strong %></td>
+        <td><%= text_style.underline %></td>
+        <td><%= text_style.italic %></td>
+        <td><%= link_to 'Show', text_style %></td>
+        <td><%= link_to 'Edit', edit_text_style_path(text_style) %></td>
+        <td><%= link_to 'Destroy', text_style, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Text Style', new_text_style_path %>

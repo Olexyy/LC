@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @text_style.name %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @text_style.weight %>
+</p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @text_style.tag %>
+</p>
+
+<p>
+  <strong>Margin left:</strong>
+  <%= @text_style.margin_left %>
+</p>
+
+<p>
+  <strong>Text align:</strong>
+  <%= @text_style.text_align %>
+</p>
+
+<p>
+  <strong>Strong:</strong>
+  <%= @text_style.strong %>
+</p>
+
+<p>
+  <strong>Underline:</strong>
+  <%= @text_style.underline %>
+</p>
+
+<p>
+  <strong>Italic:</strong>
+  <%= @text_style.italic %>
+</p>
+
+<%= link_to 'Edit', edit_text_style_path(@text_style) %> |
+<%= link_to 'Back', text_styles_path %>
