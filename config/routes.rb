@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-   get '', to: 'home#index'
-   resources :categories
-   resources :subcategories
-   get ':controller(/:action(/:id))'
+
+  resources :text_styles
+  resources :lawsuits
+  resources :web_resources
+  get '', to: 'home#index'
+  resources :categories
+  resources :subcategories
+  get ':controller(/:action(/:id))'
+
 end
