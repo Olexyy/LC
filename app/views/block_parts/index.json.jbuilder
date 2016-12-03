@@ -1,0 +1,1 @@
+json.array! @block_parts, partial: 'block_parts/block_part', as: :block_part

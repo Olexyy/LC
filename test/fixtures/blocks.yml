@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  weight: 1
+  include_type: 1
+  content_type: 1
+  block_field: one
+  field_group: one
+
+two:
+  name: MyString
+  weight: 1
+  include_type: 1
+  content_type: 1
+  block_field: two
+  field_group: two

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @block.name %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @block.weight %>
+</p>
+
+<p>
+  <strong>Include type:</strong>
+  <%= @block.include_type %>
+</p>
+
+<p>
+  <strong>Content type:</strong>
+  <%= @block.content_type %>
+</p>
+
+<p>
+  <strong>Block field:</strong>
+  <%= @block.block_field %>
+</p>
+
+<p>
+  <strong>Field group:</strong>
+  <%= @block.field_group %>
+</p>
+
+<%= link_to 'Edit', edit_block_path(@block) %> |
+<%= link_to 'Back', blocks_path %>

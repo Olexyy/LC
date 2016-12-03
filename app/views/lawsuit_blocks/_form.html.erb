@@ -1,0 +1,32 @@
+<%= form_for(lawsuit_block) do |f| %>
+  <% if lawsuit_block.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lawsuit_block.errors.count, "error") %> prohibited this lawsuit_block from being saved:</h2>
+
+      <ul>
+      <% lawsuit_block.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :weight %>
+    <%= f.number_field :weight %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lawsuit_id %>
+    <%= f.text_field :lawsuit_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :block_id %>
+    <%= f.text_field :block_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

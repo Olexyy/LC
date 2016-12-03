@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @lawsuit_block.weight %>
+</p>
+
+<p>
+  <strong>Lawsuit:</strong>
+  <%= @lawsuit_block.lawsuit %>
+</p>
+
+<p>
+  <strong>Block:</strong>
+  <%= @lawsuit_block.block %>
+</p>
+
+<%= link_to 'Edit', edit_lawsuit_block_path(@lawsuit_block) %> |
+<%= link_to 'Back', lawsuit_blocks_path %>

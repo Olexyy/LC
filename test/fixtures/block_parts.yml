@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  text: MyText
+  weight: 1
+  text_style: one
+  block: one
+
+two:
+  name: MyString
+  text: MyText
+  weight: 1
+  text_style: two
+  block: two

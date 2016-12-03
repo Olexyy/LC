@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Block Fields</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Text</th>
+      <th>Weight</th>
+      <th>Data type</th>
+      <th>Marker</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @block_fields.each do |block_field| %>
+      <tr>
+        <td><%= block_field.name %></td>
+        <td><%= block_field.text %></td>
+        <td><%= block_field.weight %></td>
+        <td><%= block_field.data_type %></td>
+        <td><%= block_field.marker %></td>
+        <td><%= link_to 'Show', block_field %></td>
+        <td><%= link_to 'Edit', edit_block_field_path(block_field) %></td>
+        <td><%= link_to 'Destroy', block_field, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Block Field', new_block_field_path %>

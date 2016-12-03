@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @block_part.name %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @block_part.text %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @block_part.weight %>
+</p>
+
+<p>
+  <strong>Text style:</strong>
+  <%= @block_part.text_style %>
+</p>
+
+<p>
+  <strong>Block:</strong>
+  <%= @block_part.block %>
+</p>
+
+<%= link_to 'Edit', edit_block_part_path(@block_part) %> |
+<%= link_to 'Back', block_parts_path %>

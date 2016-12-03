@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lawsuit Blocks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Weight</th>
+      <th>Lawsuit</th>
+      <th>Block</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lawsuit_blocks.each do |lawsuit_block| %>
+      <tr>
+        <td><%= lawsuit_block.weight %></td>
+        <td><%= lawsuit_block.lawsuit %></td>
+        <td><%= lawsuit_block.block %></td>
+        <td><%= link_to 'Show', lawsuit_block %></td>
+        <td><%= link_to 'Edit', edit_lawsuit_block_path(lawsuit_block) %></td>
+        <td><%= link_to 'Destroy', lawsuit_block, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lawsuit Block', new_lawsuit_block_path %>

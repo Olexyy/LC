@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @block_field.name %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @block_field.text %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @block_field.weight %>
+</p>
+
+<p>
+  <strong>Data type:</strong>
+  <%= @block_field.data_type %>
+</p>
+
+<p>
+  <strong>Marker:</strong>
+  <%= @block_field.marker %>
+</p>
+
+<%= link_to 'Edit', edit_block_field_path(@block_field) %> |
+<%= link_to 'Back', block_fields_path %>
