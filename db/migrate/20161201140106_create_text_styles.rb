@@ -6,9 +6,9 @@ class CreateTextStyles < ActiveRecord::Migration[5.0]
       t.integer :tag, :null => false, :default => 0
       t.integer :margin_left, :null => false, :default => 0
       t.integer :text_align, :null => false, :default => 0
-      t.boolean :strong, :null => false, :default => 0
-      t.boolean :underline, :null => false, :default => 0
-      t.boolean :italic, :null => false, :default => 0
+      t.boolean :strong, :null => false, :default => false
+      t.boolean :underline, :null => false, :default => false
+      t.boolean :italic, :null => false, :default => false
 
       t.timestamps
     end
