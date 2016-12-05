@@ -15,13 +15,13 @@ module ApplicationHelper
     html.html_safe
   end
 
-  def bootstrap_close
-    html = '</div>'
+  def bootstrap_message (type)
+    html = '<div class="alert alert-'+type+'" role="'+type+'">'
     html.html_safe
   end
 
-  def message (type)
-    html = '<div class="alert alert-'+type+'" role="'+type+'">'
+  def bootstrap_close
+    html = '</div>'
     html.html_safe
   end
 
