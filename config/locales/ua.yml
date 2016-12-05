@@ -1,0 +1,14 @@
+ua:
+  hello_world: "Привіт світ!"
+  #start page
+  welcome_on_site: "Вітаємо на порталі правової допомоги!"
+  not_agree_with_inspector?: "Потрапили в ДТП та не згодні з інспектором?"
+  protocol_conclusions_lie?: "Висновки протоколу не відповідають обставинам справи?"
+  advocate_expensive?: "Адвокати дорого коштують?"
+  no_time_to_study_law?: "Немає часу вивчати законодавство?"
+  no_one_to_consult?: "Немає з ким порадитись?"
+  but_you_are_ready_to_fight?: "Але Ви готові відстоювати свої права?"
+  solution_exists_you_should_prepare_lawsuit: "Вихід є! Треба лише заповнити дані, роздрукувати позов ..."
+  make_preparations_and_act: "... вчнити підготовчі дії та звернутись до суду!"
+  #messages
+  operation_failed: "Операція не була завершена"

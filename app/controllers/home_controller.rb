@@ -1,9 +1,7 @@
 class HomeController < ApplicationController
-
 	def index
-    @messages[:danger] = 'Alert message example'
-    @messages[:info] = 'Info message example'
-    @messages[:warning] = 'Warning message example'
+    message = t(:hello_world)
+    flash.notice = message
+    flash.alert = message
 	end
-
 end

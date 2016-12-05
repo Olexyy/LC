@@ -1,14 +1,24 @@
-<% unless @messages.nil? %>
-  <%  @messages.each do | key, value | %>
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="alert alert-<%= key %>" role="<%= key %>">
-          <strong><%= value %></strong>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  <% end %>
+<% if flash.notice %>
+  <%= bootstrap_row %>
+    <%= bootstrap_col_12 %>
+      <%= message 'info' %>
+        <strong><%= flash.notice %></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      <%= bootstrap_close %>
+    <%= bootstrap_close %>
+  <%= bootstrap_close %>
+<% end %>
+<% if flash.alert %>
+  <%= bootstrap_row %>
+    <%= bootstrap_col_12 %>
+      <%= message 'danger' %>
+        <strong><%= flash.alert %></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      <%= bootstrap_close %>
+    <%= bootstrap_close %>
+  <%= bootstrap_close %>
 <% end %>
