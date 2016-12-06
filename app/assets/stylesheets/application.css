@@ -20,7 +20,8 @@ html {
     min-height: 100%;
 }
 body {
-    margin-bottom: 60px;
+    margin: 0 0 60px 0;
+    /*margin-bottom: 60px;*/
     background: url("../background.png") repeat 0 0;
     background-size: 150px;
     font-family: Calibri !important;

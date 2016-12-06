@@ -1,6 +1,6 @@
 <!--TEASER-->
 <%= bootstrap_row %>
-  <%= bootstrap_col_12 'page-header' %>
+  <%= bootstrap_col_12 HtmlHelper::CSS_PAGE_HEADER %>
     <h1><%= t(:welcome_on_site) %></h1>
   <%= bootstrap_close %>
 <%= bootstrap_close %>
@@ -37,3 +37,6 @@
   <%= bootstrap_close %>
 <%= bootstrap_close %>
 <!--EOF_TEASER-->
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:categories), categories_path %>
+<%= bootstrap_lower_menu_close %>

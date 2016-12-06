@@ -1,12 +1,7 @@
 class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
-  helper ApplicationHelper
+  helper HtmlHelper
   layout 'application'
-
-  def initialize
-    super
-    @messages ||= {}
-  end
   
 end

@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 	def index
-    message = t(:hello_world)
+    message = t(:lorem_ipsum)
     flash.notice = message
     flash.alert = message
 	end

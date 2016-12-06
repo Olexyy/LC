@@ -1,22 +1,24 @@
-<div class="row">
-  <div class="page-header col-sm-12">
-    <h1>Current categories</h1>
-  </div>
-</div>
+<%= bootstrap_row %>
+  <%= bootstrap_col_12 %>
+    <%= h1 t(:categories) %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
 <% if @categories.blank? %>
-    <div class="row">
-      <div class="col-sm-6 item-list">
-        <p class="lead">There are no categories in list.</p>
-      </div>
-    </div>
+  <%= bootstrap_row %>
+    <%= bootstrap_col_6 HtmlHelper::CSS_ITEM_LIST %>
+      <%= p t(:list_empty), HtmlHelper::CSS_LEAD %>
+    <%= bootstrap_close %>
+  <%= bootstrap_close %>
 <% else %>
-  <% @categories.each do |c| %>
-    <div class="row">
-      <div class="col-sm-6 item-list">
-       <%= link_to c.name, {:action => 'show', :id => c.id} -%>
-      </div>
-    </div>
+  <%= @categories.each do |c| %>
+    <%= bootstrap_row %>
+      <%= bootstrap_col_6 HtmlHelper::CSS_ITEM_LIST %>
+        <%= link_to c.name, category_path(c) %>
+      <%= bootstrap_close %>
+    <%= bootstrap_close %>
   <% end %>
 <% end %>
 
-<%= render :partial => '/layouts/menu', :locals => {:links => {:Add_new => 'new'} } %>
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:new), new_category_path %>
+<%=bootstrap_lower_menu_close %>
