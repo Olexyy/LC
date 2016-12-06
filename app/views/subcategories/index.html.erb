@@ -5,14 +5,14 @@
 </div>
 <% if @subcategories.blank? %>
     <div class="row">
-      <div class="col-sm-6 item-list">
+      <div class="col-sm-6 list-item">
         <p class="lead">There are no subcategories in list.</p>
       </div>
     </div>
 <% else %>
     <% @subcategories.each do |c| %>
         <div class="row">
-          <div class="col-sm-6 item-list">
+          <div class="col-sm-6 list-item">
             <%= link_to c.name, {:action => 'show', :id => c.id} -%>
           </div>
         </div>

@@ -5,20 +5,17 @@
 <%= bootstrap_close %>
 <% if @categories.blank? %>
   <%= bootstrap_row %>
-    <%= bootstrap_col_6 HtmlHelper::CSS_ITEM_LIST %>
+    <%= bootstrap_col_6 HtmlHelper::CSS_LIST_ITEM %>
       <%= p t(:list_empty), HtmlHelper::CSS_LEAD %>
     <%= bootstrap_close %>
   <%= bootstrap_close %>
 <% else %>
-  <%= @categories.each do |c| %>
-    <%= bootstrap_row %>
-      <%= bootstrap_col_6 HtmlHelper::CSS_ITEM_LIST %>
-        <%= link_to c.name, category_path(c) %>
-      <%= bootstrap_close %>
-    <%= bootstrap_close %>
-  <% end %>
+  <%= bootstrap_list %>
+    <% @categories.each do |c| %>
+       <%= li (link_to c.name, category_path(c)) %>
+    <% end %>
+  <%= bootstrap_list_close %>
 <% end %>
-
 <%= bootstrap_lower_menu %>
   <%= link_to t(:new), new_category_path %>
-<%=bootstrap_lower_menu_close %>
+<%= bootstrap_lower_menu_close %>

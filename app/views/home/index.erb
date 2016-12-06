@@ -1,39 +1,45 @@
 <!--TEASER-->
+<%= bootstrap_page_header %>
+  <%= h1 t(:welcome_on_site) %>
+<%= bootstrap_page_header_close %>
 <%= bootstrap_row %>
-  <%= bootstrap_col_12 HtmlHelper::CSS_PAGE_HEADER %>
-    <h1><%= t(:welcome_on_site) %></h1>
+  <%= bootstrap_col_6 %>
+    <%= div '', 'inspector teaser-icon' %>
+    <%= p t(:not_agree_with_inspector?), 'teaser-text lead' %>
+  <%= bootstrap_close %>
+  <%= bootstrap_col_6 %>
+    <%= div '', 'protocol teaser-icon' %>
+    <%= p t(:protocol_conclusions_lie?), 'teaser-text lead' %>
   <%= bootstrap_close %>
 <%= bootstrap_close %>
 <%= bootstrap_row %>
   <%= bootstrap_col_6 %>
-    <div class="inspector teaser-icon"></div><p class="teaser-text lead"><%= t(:not_agree_with_inspector?) %></p>
+    <%= div '', 'expensive teaser-icon' %>
+    <%= p t(:advocate_expensive?), 'teaser-text lead' %>
   <%= bootstrap_close %>
   <%= bootstrap_col_6 %>
-    <div class="protocol teaser-icon"></div><p class="teaser-text lead"><%= t(:protocol_conclusions_lie?) %></p>
-  <%= bootstrap_close %>
-<%= bootstrap_close %>
-<%= bootstrap_row %>
-  <%= bootstrap_col_6 %>
-    <div class="expensive teaser-icon"></div><p class="teaser-text lead"><%= t(:advocate_expensive?) %></p>
-  <%= bootstrap_close %>
-  <%= bootstrap_col_6 %>
-    <div class="laws teaser-icon"></div><p class="teaser-text lead"><%= t(:no_time_to_study_law?) %></p>
+    <%= div '', 'laws teaser-icon' %>
+    <%= p t(:no_time_to_study_law?), 'teaser-text lead' %>
   <%= bootstrap_close %>
 <%= bootstrap_close %>
 <%= bootstrap_row %>
   <%= bootstrap_col_6 %>
-    <div class="alone teaser-icon"></div><p class="teaser-text lead"><%= t(:no_one_to_consult?) %></p>
+    <%= div '', 'alone teaser-icon' %>
+    <%= p t(:no_one_to_consult?), 'teaser-text lead' %>
   <%= bootstrap_close %>
   <%= bootstrap_col_6 %>
-    <div class="but teaser-icon"></div><p class="teaser-text lead"><%= t(:but_you_are_ready_to_fight?) %></p>
+    <%= div '', 'but teaser-icon' %>
+    <%= p t(:but_you_are_ready_to_fight?), 'teaser-text lead' %>
   <%= bootstrap_close %>
 <%= bootstrap_close %>
 <%= bootstrap_row %>
   <%= bootstrap_col_6 %>
-    <div class="idea teaser-icon"></div><p class="teaser-text lead"><%= t(:solution_exists_you_should_prepare_lawsuit) %></p>
+    <%= div '', 'idea teaser-icon' %>
+    <%= p t(:solution_exists_you_should_prepare_lawsuit), 'teaser-text lead' %>
   <%= bootstrap_close %>
   <%= bootstrap_col_6 %>
-    <div class="go teaser-icon"></div><p class="teaser-text lead"><%= t(:make_preparations_and_act) %></p>
+    <%= div '', 'go teaser-icon' %>
+    <%= p t(:make_preparations_and_act), 'teaser-text lead' %>
   <%= bootstrap_close %>
 <%= bootstrap_close %>
 <!--EOF_TEASER-->
