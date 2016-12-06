@@ -13,6 +13,9 @@ ua:
   solution_exists_you_should_prepare_lawsuit: "Вихід є! Треба лише заповнити дані, роздрукувати позов ..."
   make_preparations_and_act: "... вчнити підготовчі дії та звернутись до суду!"
 
+  #menu
+  back: "Назад"
+
   #messages
   operation_failed: "Операція не була завершена"
   field_is_required: "Поле є обов'язковим"
@@ -25,5 +28,15 @@ ua:
   edit: "Редагувати"
   delete: "Видалити"
 
+  #form fields
+  name: "Назва"
+  weight: "Вага"
+
+  #form buttons
+  save: "Зберегти"
+
   #categories
+  category: "Категорія"
   categories: "Категорії позовів"
+  new_category: "Нова категорія"
+  category_edit: "Зміна категорії"

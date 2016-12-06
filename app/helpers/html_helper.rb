@@ -8,6 +8,9 @@ module HtmlHelper
   CSS_TEASER_TEXT = 'teaser-text'
   CSS_LIST_ITEM = 'list-item'
   CSS_LIST_CONTAINER = 'list-container'
+  CSS_FIELD = 'field'
+  CSS_ACTIONS = 'actions'
+  CSS_SHOW = 'show'
 
   def bootstrap_col (num = 1, class_name = '')
     html = '<div class="col-sm-'.+num.to_s+' '+class_name+'">'
@@ -70,7 +73,7 @@ module HtmlHelper
   end
 
   def bootstrap_list_close
-    html = '</ul>'
+    html = '</ul>'.html_safe
     html += bootstrap_close 2
     html.html_safe
   end
@@ -92,6 +95,11 @@ module HtmlHelper
 
   def li(text, class_name = '')
     html = '<li class="'+class_name+'">'+text+'</li>'
+    html.html_safe
+  end
+
+  def labl(text, class_name = '')
+    html = '<label class="'+class_name+'">'+text+'</label>'
     html.html_safe
   end
 

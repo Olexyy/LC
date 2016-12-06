@@ -1,24 +1,9 @@
-<div class="row">
-  <div class="page-header col-sm-12">
-    <h1>Edit Category</h1>
-  </div>
-</div>
-<%= form_for @category, :url =>{:action => 'update', :id =>@category} do |f| %>
-<div class="row">
-  <div class="col-sm-6 item-list">
-    <p>Name: <%= f.text_field 'name' %></p>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6 item-list">
-      <p>Weight: <%= f.text_field  'weight' %></p>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6 item-list">
-    <%= f.submit 'Save changes' %>
-  </div>
-</div>
-<% end %>
-
-<%= render :partial => '/layouts/menu', :locals => {:links => {:Back => 'index'} } %>
+<%= bootstrap_row %>
+  <%= bootstrap_col_12 %>
+    <%= h1 t(:new_category) %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<%= render 'form', category: @category %>
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:back), categories_path %>
+<%= bootstrap_lower_menu_close %>

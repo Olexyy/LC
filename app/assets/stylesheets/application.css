@@ -118,3 +118,18 @@ p.teaser-text {
 div.list-item {
     margin-left: 20px;
 }
+/* form field */
+div.field div.col-sm-2 {
+    padding-top: 12px;
+}
+/* show page */
+div.show p {
+    margin: 0 0 0 20px;
+}
+div.show p label {
+    display: inline;
+}
+/* lower menu*/
+div.lower-menu a {
+    margin: 5px 0 5px 20px;
+}
