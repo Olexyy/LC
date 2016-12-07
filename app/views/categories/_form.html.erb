@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-  <%= bootstrap_row HtmlHelper::CSS_FIELD %>
+  <%= bootstrap_row Html::CSS_FIELD %>
     <%= bootstrap_col 2 %>
       <%= f.label t(:name) %>
     <%= bootstrap_close %>
@@ -18,7 +18,7 @@
       <%= f.text_field :name %>
     <%= bootstrap_close %>
   <%= bootstrap_close %>
-  <%= bootstrap_row HtmlHelper::CSS_FIELD %>
+  <%= bootstrap_row Html::CSS_FIELD %>
     <%= bootstrap_col 2 %>
       <%= f.label t(:weight) %>
     <%= bootstrap_close %>
@@ -26,8 +26,8 @@
       <%= f.number_field :weight %>
     <%= bootstrap_close %>
   <%= bootstrap_close %>
-  <%= bootstrap_row HtmlHelper::CSS_ACTIONS %>
-    <%= bootstrap_col_6 HtmlHelper::CSS_LIST_ITEM %>
+  <%= bootstrap_row Html::CSS_ACTIONS %>
+    <%= bootstrap_col_6 Html::CSS_LIST_ITEM %>
       <%= f.submit t(:save) %>
     <%= bootstrap_close %>
   <%= bootstrap_close %>

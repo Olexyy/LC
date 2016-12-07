@@ -38,6 +38,7 @@ body > .container {
     padding: 60px 20px 150px;
     background-color: rgba(100, 100, 100, 0.15);
     height: 100%;
+    min-height: 85vh;
 }
 div.page-header{
     border-bottom-color: darkgray;
@@ -130,6 +131,10 @@ div.show p label {
     display: inline;
 }
 /* lower menu*/
+div.lower-menu {
+    position: absolute;
+    bottom: 150px;
+}
 div.lower-menu a {
     margin: 5px 0 5px 20px;
 }

@@ -1,4 +1,4 @@
-module HtmlHelper
+module Html
   #paths for partials
   PATH_MESSAGE = '/layouts/message'
   #css classes
@@ -67,7 +67,7 @@ module HtmlHelper
 
   def bootstrap_list
     html = bootstrap_row
-    html += bootstrap_col_12 HtmlHelper::CSS_LIST_CONTAINER
+    html += bootstrap_col_12 CSS_LIST_CONTAINER
     html += '<ul>'.html_safe
     html.html_safe
   end
@@ -98,7 +98,7 @@ module HtmlHelper
     html.html_safe
   end
 
-  def labl(text, class_name = '')
+  def lbl(text, class_name = '')
     html = '<label class="'+class_name+'">'+text+'</label>'
     html.html_safe
   end

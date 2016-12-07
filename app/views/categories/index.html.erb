@@ -5,8 +5,8 @@
 <%= bootstrap_close %>
 <% if @categories.blank? %>
   <%= bootstrap_row %>
-    <%= bootstrap_col_6 HtmlHelper::CSS_LIST_ITEM %>
-      <%= p t(:list_empty), HtmlHelper::CSS_LEAD %>
+    <%= bootstrap_col_6 Html::CSS_LIST_ITEM %>
+      <%= p t(:list_empty), Html::CSS_LEAD %>
     <%= bootstrap_close %>
   <%= bootstrap_close %>
 <% else %>
