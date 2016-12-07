@@ -1,22 +1,21 @@
-<div class="row">
-  <div class="page-header col-sm-12">
-    <h1>Current subcategories</h1>
-  </div>
-</div>
+<%= bootstrap_row %>
+  <%= bootstrap_col_12 %>
+    <%= h1 t(:subcategories) %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
 <% if @subcategories.blank? %>
-    <div class="row">
-      <div class="col-sm-6 list-item">
-        <p class="lead">There are no subcategories in list.</p>
-      </div>
-    </div>
+  <%= bootstrap_row %>
+    <%= bootstrap_col_6 Html::CSS_LIST_ITEM %>
+      <%= p t(:list_empty), Html::CSS_LEAD %>
+    <%= bootstrap_close %>
+  <%= bootstrap_close %>
 <% else %>
+  <%= bootstrap_list %>
     <% @subcategories.each do |c| %>
-        <div class="row">
-          <div class="col-sm-6 list-item">
-            <%= link_to c.name, {:action => 'show', :id => c.id} -%>
-          </div>
-        </div>
+        <%= li (link_to c.name, subcategory_path(c)) %>
     <% end %>
+  <%= bootstrap_list_close %>
 <% end %>
-
-<%= render :partial => '/layouts/menu', :locals => {:links => {:Add_new => 'new'} } %>
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:new), new_subcategory_path %>
+<%= bootstrap_lower_menu_close %>

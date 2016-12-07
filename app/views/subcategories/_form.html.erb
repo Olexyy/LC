@@ -1,6 +1,6 @@
-<%= form_for(category) do |f| %>
-  <% if category.errors.any? %>
-    <%= render partial: Html::PATH_VALIDATION_NOTICE, locals: { form: category } %>
+<%= form_for(@subcategory) do |f| %>
+  <% if @subcategory.errors.any? %>
+    <%= render partial: Html::PATH_VALIDATION_NOTICE, locals: { form: @subcategory } %>
   <% end %>
   <%= bootstrap_row Html::CSS_FIELD %>
     <%= bootstrap_col 2 %>
@@ -8,6 +8,14 @@
     <%= bootstrap_close %>
     <%= bootstrap_col_6 %>
       <%= f.text_field :name %>
+    <%= bootstrap_close %>
+  <%= bootstrap_close %>
+  <%= bootstrap_row Html::CSS_FIELD %>
+    <%= bootstrap_col 2 %>
+      <%= f.label t(:category) %>
+    <%= bootstrap_close %>
+    <%= bootstrap_col_6 %>
+      <%= f.select :category_id, Category.all.collect { |i| [ i.name, i.id ] } %>
     <%= bootstrap_close %>
   <%= bootstrap_close %>
   <%= bootstrap_row Html::CSS_FIELD %>

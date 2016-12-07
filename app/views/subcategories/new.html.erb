@@ -1,32 +1,9 @@
-<div class="row">
-  <div class="page-header col-sm-12">
-    <h1>Add new</h1>
-  </div>
-</div>
-<%= form_for @subcategory, :url => {:action => 'create'} do |f| %>
-<div class="row">
-  <div class="col-sm-6 item-list">
-    <p><label for = "category_name">Name</label>:
-      <%= f.text_field :name %></p>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6 item-list">
-    <p><label for = "subcategory_category_id">Category</label>:
-      <%= f.collection_select( :category_id, @categories, :id, :name, prompt: true) %></p>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6 item-list">
-    <p><label for = "category_weight">Weight</label>:
-      <%= f.number_field :weight %></p>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6 item-list">
-    <%= f.submit 'Create' %>
-  </div>
-</div>
-<% end -%>
-
-<%= render :partial => '/layouts/menu', :locals => {:links => {:Back => 'index'} } %>
+<%= bootstrap_row %>
+  <%= bootstrap_col_12 %>
+    <%= h1 t(:new_subcategory) %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<%= render 'form' %>
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:back), subcategories_path %>
+<%= bootstrap_lower_menu_close %>

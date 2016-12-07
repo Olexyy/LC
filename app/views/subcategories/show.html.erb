@@ -1,22 +1,25 @@
-<div class="row">
-  <div class="page-header col-sm-12">
-    <h1><%= @subcategory.name %></h1>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6 item-list">
-    <p><strong>Name: </strong> <%= @subcategory.name %></p>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6 item-list">
-    <p><strong>Category: </strong> <%= @subcategory.category.name %></p>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6 item-list">
-    <p><strong>Weight: </strong> <%= @subcategory.weight %></p>
-  </div>
-</div>
-
-<%= render :partial => '/layouts/menu', :locals => {:links => {:Edit => "edit%#{@category.id.to_s}", :Delete => "destroy%#{@category.id.to_s}", :Back => 'index'} } %>
+<%= bootstrap_row %>
+  <%= bootstrap_col_12 %>
+    <%= h1 t(:subcategory) %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<%= bootstrap_row %>
+  <%= bootstrap_col_6 Html::CSS_SHOW %>
+    <%= p (lbl t(:name)) + ': ' + @subcategory.name %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<%= bootstrap_row %>
+  <%= bootstrap_col_6 Html::CSS_SHOW %>
+    <%= p (lbl t(:category)) + ': ' + @subcategory.category.name %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<%= bootstrap_row %>
+  <%= bootstrap_col_6 Html::CSS_SHOW %>
+    <%= p (lbl t(:weight)) + ': ' + @subcategory.weight.to_s %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<%= bootstrap_lower_menu 6 %>
+  <%= link_to t(:edit), edit_subcategory_path(@subcategory) %>
+  <%= link_to t(:delete), subcategory_path(@subcategory), method: :delete, data: { confirm: 'Are you sure?' }  %>
+  <%= link_to t(:back), subcategories_path %>
+<%= bootstrap_lower_menu_close %>

@@ -20,6 +20,7 @@ ua:
   operation_failed: "Операція не була завершена"
   field_is_required: "Поле є обов'язковим"
   list_empty: "Список пустий"
+  validation_error: "Введені дані не коректні"
 
   #CRUD
   list: "Список"
@@ -40,3 +41,9 @@ ua:
   categories: "Категорії позовів"
   new_category: "Нова категорія"
   category_edit: "Зміна категорії"
+
+  #subcategories
+  subcategory: "Підкатегорія"
+  subcategories: "Підкатегорії позовів"
+  new_subcategory: "Нова підкатегорія"
+  subcategory_edit: "Зміна підкатегорії"

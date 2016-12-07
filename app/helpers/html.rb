@@ -1,6 +1,7 @@
 module Html
   #paths for partials
   PATH_MESSAGE = '/layouts/message'
+  PATH_VALIDATION_NOTICE = '/layouts/validation_notice'
   #css classes
   CSS_LEAD = 'lead'
   CSS_LOWER_MENU = 'lower-menu'

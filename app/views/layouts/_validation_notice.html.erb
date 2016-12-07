@@ -1,0 +1,12 @@
+<% if form.errors.any? %>
+  <%= bootstrap_row %>
+    <%= bootstrap_col_12 %>
+      <%= bootstrap_message 'danger' %>
+        <strong><%= t(:validation_error) %></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      <%= bootstrap_close %>
+    <%= bootstrap_close %>
+  <%= bootstrap_close %>
+<% end %>
