@@ -1,42 +1,50 @@
 <%= form_for(web_resource) do |f| %>
   <% if web_resource.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(web_resource.errors.count, "error") %> prohibited this web_resource from being saved:</h2>
-
-      <ul>
-      <% web_resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+    <%= render partial: Html::PATH_VALIDATION_NOTICE, locals: { form: web_resource } %>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= f.label :body %>
-    <%= f.text_field :body %>
-  </div>
-
-  <div class="field">
-    <%= f.label :key %>
-    <%= f.text_field :key %>
-  </div>
-
-  <div class="field">
-    <%= f.label :weight %>
-    <%= f.number_field :weight %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= bootstrap_row Html::CSS_FIELD %>
+    <%= bootstrap_col 2 %>
+      <%= f.label t(:name) %>
+    <%= bootstrap_close %>
+    <%= bootstrap_col_6 %>
+      <%= f.text_field :name %>
+    <%= bootstrap_close %>
+  <%= bootstrap_close %>
+  <%= bootstrap_row Html::CSS_FIELD %>
+    <%= bootstrap_col 2 %>
+      <%= f.label t(:key) %>
+    <%= bootstrap_close %>
+    <%= bootstrap_col_6 %>
+      <%= f.text_field :key %>
+    <%= bootstrap_close %>
+  <%= bootstrap_close %>
+  <%= bootstrap_row Html::CSS_FIELD %>
+    <%= bootstrap_col 2 %>
+      <%= f.label t(:title) %>
+    <%= bootstrap_close %>
+    <%= bootstrap_col_6 %>
+      <%= f.text_field :title %>
+    <%= bootstrap_close %>
+  <%= bootstrap_close %>
+  <%= bootstrap_row Html::CSS_FIELD %>
+    <%= bootstrap_col 2 %>
+      <%= f.label t(:body) %>
+    <%= bootstrap_close %>
+    <%= bootstrap_col_6 %>
+      <%= f.text_area :body, cols: 20, rows: 10 %>
+    <%= bootstrap_close %>
+  <%= bootstrap_close %>
+  <%= bootstrap_row Html::CSS_FIELD %>
+    <%= bootstrap_col 2 %>
+      <%= f.label t(:weight) %>
+    <%= bootstrap_close %>
+    <%= bootstrap_col_6 %>
+      <%= f.number_field :weight %>
+    <%= bootstrap_close %>
+  <%= bootstrap_close %>
+  <%= bootstrap_row Html::CSS_ACTIONS %>
+    <%= bootstrap_col_6 Html::CSS_LIST_ITEM %>
+      <%= f.submit t(:save) %>
+    <%= bootstrap_close %>
+  <%= bootstrap_close %>
 <% end %>

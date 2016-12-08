@@ -1,1 +1,0 @@
-json.array! @web_resources, partial: 'web_resources/web_resource', as: :web_resource

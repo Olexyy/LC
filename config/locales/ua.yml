@@ -35,7 +35,10 @@ ua:
   name: "Назва"
   weight: "Вага"
   none: "Немає"
-  blank: nil
+  blank: " "
+  title: "Заголовок"
+  body: "Опис"
+  key: "Ключ"
 
   #form buttons
   save: "Зберегти"

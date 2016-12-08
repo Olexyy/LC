@@ -2,13 +2,11 @@ class WebResourcesController < ApplicationController
   before_action :set_web_resource, only: [:show, :edit, :update, :destroy]
 
   # GET /web_resources
-  # GET /web_resources.json
   def index
-    @web_resources = WebResource.all
+    @web_resources = WebResource.sorted
   end
 
   # GET /web_resources/1
-  # GET /web_resources/1.json
   def show
   end
 
@@ -17,47 +15,39 @@ class WebResourcesController < ApplicationController
     @web_resource = WebResource.new
   end
 
-  # GET /web_resources/1/edit
-  def edit
-  end
-
   # POST /web_resources
-  # POST /web_resources.json
   def create
     @web_resource = WebResource.new(web_resource_params)
 
     respond_to do |format|
       if @web_resource.save
-        format.html { redirect_to @web_resource, notice: 'Web resource was successfully created.' }
-        format.json { render :show, status: :created, location: @web_resource }
+        format.html { redirect_to @web_resource, notice: t(:operation_successful) }
       else
         format.html { render :new }
-        format.json { render json: @web_resource.errors, status: :unprocessable_entity }
       end
     end
   end
 
+  # GET /web_resources/1/edit
+  def edit
+  end
+
   # PATCH/PUT /web_resources/1
-  # PATCH/PUT /web_resources/1.json
   def update
     respond_to do |format|
       if @web_resource.update(web_resource_params)
-        format.html { redirect_to @web_resource, notice: 'Web resource was successfully updated.' }
-        format.json { render :show, status: :ok, location: @web_resource }
+        format.html { redirect_to @web_resource, notice: t(:operation_successful) }
       else
         format.html { render :edit }
-        format.json { render json: @web_resource.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /web_resources/1
-  # DELETE /web_resources/1.json
   def destroy
     @web_resource.destroy
     respond_to do |format|
-      format.html { redirect_to web_resources_url, notice: 'Web resource was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to web_resources_url, notice: t(:operation_successful) }
     end
   end
 

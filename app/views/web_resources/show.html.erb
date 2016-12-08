@@ -1,29 +1,36 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @web_resource.name %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @web_resource.title %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @web_resource.body %>
-</p>
-
-<p>
-  <strong>Key:</strong>
-  <%= @web_resource.key %>
-</p>
-
-<p>
-  <strong>Weight:</strong>
-  <%= @web_resource.weight %>
-</p>
-
-<%= link_to 'Edit', edit_web_resource_path(@web_resource) %> |
-<%= link_to 'Back', web_resources_path %>
+<%= bootstrap_row %>
+  <%= bootstrap_col_12 %>
+    <%= h1 t(:web_resource) %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<%= bootstrap_row %>
+  <%= bootstrap_col_6 Html::CSS_SHOW %>
+    <%= p (lbl t(:name)) + ': ' + @web_resource.name %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<%= bootstrap_row %>
+  <%= bootstrap_col_6 Html::CSS_SHOW %>
+    <%= p (lbl t(:key)) + ': ' + @web_resource.key %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<%= bootstrap_row %>
+  <%= bootstrap_col_6 Html::CSS_SHOW %>
+    <%= p (lbl t(:title)) + ': ' + @web_resource.title %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<%= bootstrap_row %>
+  <%= bootstrap_col_6 Html::CSS_SHOW %>
+    <%= lbl t(:body)+ ': ' %>
+    <%= textarea @web_resource.body %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<%= bootstrap_row %>
+  <%= bootstrap_col_6 Html::CSS_SHOW %>
+    <%= p (lbl t(:weight)) + ': ' + @web_resource.weight.to_s %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<%= bootstrap_lower_menu 6 %>
+  <%= link_to t(:edit), edit_web_resource_path(@web_resource) %>
+  <%= link_to t(:delete), web_resource_path(@web_resource), method: :delete, data: { confirm: t(:are_you_sure?) }  %>
+  <%= link_to t(:back), web_resources_path %>
+<%= bootstrap_lower_menu_close %>

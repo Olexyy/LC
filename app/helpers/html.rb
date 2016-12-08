@@ -104,8 +104,9 @@ module Html
     html.html_safe
   end
 
-  def numeric_width(num=50)
-    { style: "width:#{num}px"}
+  def textarea(text, class_name = '')
+    html = '<textarea class="'+class_name+'" disabled="disabled">'+text+'</textarea>'
+    html.html_safe
   end
 
 end

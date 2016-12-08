@@ -1,6 +1,9 @@
-<h1>Editing Web Resource</h1>
-
+<%= bootstrap_row %>
+  <%= bootstrap_col_12 %>
+    <%= h1 t(:web_resource) %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
 <%= render 'form', web_resource: @web_resource %>
-
-<%= link_to 'Show', @web_resource %> |
-<%= link_to 'Back', web_resources_path %>
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:back), web_resources_path %>
+<%= bootstrap_lower_menu_close %>

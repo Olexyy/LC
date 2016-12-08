@@ -2,6 +2,7 @@ class WebResource < ApplicationRecord
   has_many :lawsuits
   validates_presence_of :name
   validates_presence_of :body
+  validates_presence_of :key
   validates_numericality_of :weight
 
   def self.sorted

@@ -124,7 +124,7 @@ div.field div.col-sm-2 {
     padding-top: 12px;
 }
 /* show page */
-div.show p {
+div.show > p, div.show > label, div.show > textarea {
     margin: 0 0 0 20px;
 }
 div.show p label {
