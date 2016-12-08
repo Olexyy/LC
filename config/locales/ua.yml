@@ -34,6 +34,8 @@ ua:
   #form fields
   name: "Назва"
   weight: "Вага"
+  none: "Немає"
+  blank: nil
 
   #form buttons
   save: "Зберегти"
@@ -55,3 +57,9 @@ ua:
   lawsuits: "Позови"
   new_lawsuit: "Новий позов"
   lawsuit_edit: "Зміна позову"
+
+  #web resources
+  web_resource: "Веб ресурс"
+  web_resources: "Веб ресурси"
+  new_web_resource: "Новий веб ресурс"
+  web_resource_edit: "Зміна веб ресурсу"

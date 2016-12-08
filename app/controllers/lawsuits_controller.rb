@@ -17,6 +17,11 @@ class LawsuitsController < ApplicationController
 
   # POST /lawsuits
   def create
+    params = lawsuit_params
+    if params[:web_resource_id] == ''
+      params[:web_resource_id] = nil
+    end
+
     @lawsuit = Lawsuit.new(lawsuit_params)
 
     respond_to do |format|

@@ -2,6 +2,7 @@ class Subcategory < ApplicationRecord
   belongs_to :category
   has_many :lawsuits
   validates_presence_of :name
+  validates_presence_of :category_id
   validates_numericality_of :weight
 
   def self.sorted

@@ -1,6 +1,9 @@
-<h1>Editing Lawsuit</h1>
-
-<%= render 'form', lawsuit: @lawsuit %>
-
-<%= link_to 'Show', @lawsuit %> |
-<%= link_to 'Back', lawsuits_path %>
+<%= bootstrap_row %>
+  <%= bootstrap_col_12 %>
+    <%= h1 t(:lawsuit_edit) %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<%= render 'form' %>
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:back), lawsuits_path %>
+<%= bootstrap_lower_menu_close %>

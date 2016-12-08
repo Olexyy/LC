@@ -1,24 +1,25 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @lawsuit.name %>
-</p>
-
-<p>
-  <strong>Weight:</strong>
-  <%= @lawsuit.weight %>
-</p>
-
-<p>
-  <strong>Subcategory:</strong>
-  <%= @lawsuit.subcategory_id %>
-</p>
-
-<p>
-  <strong>Webresource:</strong>
-  <%= @lawsuit.webresource_id %>
-</p>
-
-<%= link_to 'Edit', edit_lawsuit_path(@lawsuit) %> |
-<%= link_to 'Back', lawsuits_path %>
+<%= bootstrap_row %>
+  <%= bootstrap_col_12 %>
+    <%= h1 t(:lawsuit) %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<%= bootstrap_row %>
+  <%= bootstrap_col_6 Html::CSS_SHOW %>
+    <%= p (lbl t(:name)) + ': ' + @lawsuit.name %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<%= bootstrap_row %>
+  <%= bootstrap_col_6 Html::CSS_SHOW %>
+    <%= p (lbl t(:subcategory)) + ': ' + @lawsuit.subcategory.name %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<%= bootstrap_row %>
+  <%= bootstrap_col_6 Html::CSS_SHOW %>
+    <%= p (lbl t(:weight)) + ': ' + @lawsuit.weight.to_s %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<%= bootstrap_lower_menu 6 %>
+  <%= link_to t(:edit), edit_lawsuit_path(@lawsuit) %>
+  <%= link_to t(:delete), lawsuit_path(@lawsuit), method: :delete, data: { confirm: t(:are_you_sure?) }  %>
+  <%= link_to t(:back), lawsuits_path %>
+<%= bootstrap_lower_menu_close %>

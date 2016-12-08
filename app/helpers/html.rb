@@ -104,4 +104,8 @@ module Html
     html.html_safe
   end
 
+  def numeric_width(num=50)
+    { style: "width:#{num}px"}
+  end
+
 end

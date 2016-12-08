@@ -1,33 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Lawsuits</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Weight</th>
-      <th>Subcategory</th>
-      <th>Webresource</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @lawsuits.each do |lawsuit| %>
-      <tr>
-        <td><%= lawsuit.name %></td>
-        <td><%= lawsuit.weight %></td>
-        <td><%= lawsuit.subcategory_id %></td>
-        <td><%= lawsuit.webresource_id %></td>
-        <td><%= link_to 'Show', lawsuit %></td>
-        <td><%= link_to 'Edit', edit_lawsuit_path(lawsuit) %></td>
-        <td><%= link_to 'Destroy', lawsuit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<%= bootstrap_row %>
+  <%= bootstrap_col_12 %>
+    <%= h1 t(:lawsuits) %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<% if @lawsuits.blank? %>
+<%= bootstrap_row %>
+  <%= bootstrap_col_6 Html::CSS_LIST_ITEM %>
+    <%= p t(:list_empty), Html::CSS_LEAD %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<% else %>
+  <%= bootstrap_list %>
+    <% @lawsuits.each do |c| %>
+      <%= li (link_to c.name, lawsuit_path(c)) %>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Lawsuit', new_lawsuit_path %>
+  <%= bootstrap_list_close %>
+<% end %>
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:new), new_lawsuit_path %>
+<%= bootstrap_lower_menu_close %>
