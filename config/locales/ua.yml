@@ -18,9 +18,11 @@ ua:
 
   #messages
   operation_failed: "Операція не була завершена"
+  operation_successful: "Операція успішно завершена"
   field_is_required: "Поле є обов'язковим"
   list_empty: "Список пустий"
   validation_error: "Введені дані не коректні"
+  are_you_sure?: "Ви впевнені?"
 
   #CRUD
   list: "Список"
@@ -47,3 +49,9 @@ ua:
   subcategories: "Підкатегорії позовів"
   new_subcategory: "Нова підкатегорія"
   subcategory_edit: "Зміна підкатегорії"
+
+  #lawsuits
+  lawsuit: "Позов"
+  lawsuits: "Позови"
+  new_lawsuit: "Новий позов"
+  lawsuit_edit: "Зміна позову"

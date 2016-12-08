@@ -15,7 +15,7 @@
       <%= f.label t(:category) %>
     <%= bootstrap_close %>
     <%= bootstrap_col_6 %>
-      <%= f.select :category_id, Category.all.collect { |i| [ i.name, i.id ] } %>
+      <%= f.select :category_id, Category.select_list %>
     <%= bootstrap_close %>
   <%= bootstrap_close %>
   <%= bootstrap_row Html::CSS_FIELD %>

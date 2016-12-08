@@ -1,46 +1,63 @@
 class CategoriesController < ApplicationController
+  before_action :set_category, only: [:show, :edit, :update, :destroy]
 
+  # GET /categories
   def index
-    @categories = Category.all
+    @categories = Category.sorted
   end
 
+  # GET /categories/1
   def show
-    @category = Category.find(params[:id])
   end
 
+  # GET /categories/new
   def new
     @category = Category.new
   end
 
+  # POST /categories
   def create
     @category = Category.new(category_params)
-    if @category.save
-      redirect_to :action => 'index'
-    else
-      render :action => 'new'
+    respond_to do |format|
+      if @category.save
+        format.html { redirect_to category_url(@category), notice: t(:operation_successful) }
+      else
+        format.html { render :new }
+      end
     end
   end
 
+  # GET /categories/1/edit
   def edit
-    @category = Category.find(params[:id])
   end
 
+  # PATCH/PUT /categories/1
   def update
-    @category = Category.find(params[:id])
-    if @category.update_attributes(category_params)
-      redirect_to :action => 'show', :id => @category
-    else
-      render :action => 'edit'
+    respond_to do |format|
+      if @category.update(category_params)
+        format.html { redirect_to category_url(@category), notice: t(:operation_successful) }
+      else
+        format.html { render :edit }
+      end
     end
   end
 
+  # DELETE /categories/1
   def destroy
-    Category.find(params[:id]).destroy
-    redirect_to :action => 'index'
+    @category.destroy
+    respond_to do |format|
+      format.html { redirect_to categories_url, notice: t(:operation_successful) }
+    end
   end
 
-  def category_params
-    params.require(:category).permit(:name, :weight)
-  end
+  private
+  # Use callbacks to share common setup or constraints between actions.
+    def set_category
+      @category = Category.find(params[:id])
+    end
+
+    def category_params
+      params.require(:category).permit(:name, :weight)
+    end
 
 end

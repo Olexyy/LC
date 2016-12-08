@@ -20,6 +20,6 @@
 <%= bootstrap_close %>
 <%= bootstrap_lower_menu 6 %>
   <%= link_to t(:edit), edit_subcategory_path(@subcategory) %>
-  <%= link_to t(:delete), subcategory_path(@subcategory), method: :delete, data: { confirm: 'Are you sure?' }  %>
+  <%= link_to t(:delete), subcategory_path(@subcategory), method: :delete, data: { confirm: t(:are_you_sure?) }  %>
   <%= link_to t(:back), subcategories_path %>
 <%= bootstrap_lower_menu_close %>
