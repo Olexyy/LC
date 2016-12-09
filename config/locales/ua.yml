@@ -15,6 +15,7 @@ ua:
 
   #menu
   back: "Назад"
+  home: "На головну"
 
   #messages
   operation_failed: "Операція не була завершена"
@@ -42,6 +43,9 @@ ua:
 
   #form buttons
   save: "Зберегти"
+
+  #admin
+  admin_menu: "Адміністративне меню"
 
   #categories
   category: "Категорія"
