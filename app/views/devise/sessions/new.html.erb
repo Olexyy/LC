@@ -1,0 +1,40 @@
+<%= bootstrap_row %>
+  <%= bootstrap_col_12 %>
+    <%= h1 t(:log_in) %>
+  <%= bootstrap_close %>
+<%= bootstrap_close %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= bootstrap_row Html::CSS_FIELD %>
+    <%= bootstrap_col 2 %>
+      <%= f.label t(:email) %>
+    <%= bootstrap_close %>
+    <%= bootstrap_col_6 %>
+      <%= f.text_field :email %>
+    <%= bootstrap_close %>
+  <%= bootstrap_close %>
+  <%= bootstrap_row Html::CSS_FIELD %>
+    <%= bootstrap_col 2 %>
+      <%= f.label t(:password) %>
+    <%= bootstrap_close %>
+    <%= bootstrap_col_6 %>
+      <%= f.password_field :password, autocomplete: "off" %>
+    <%= bootstrap_close %>
+  <%= bootstrap_close %>
+  <% if devise_mapping.rememberable? -%>
+    <%= bootstrap_row Html::CSS_FIELD %>
+      <%= bootstrap_col 2 %>
+        <%= f.check_box :remember_me %>
+      <%= bootstrap_close %>
+      <%= bootstrap_col_6 %>
+        <%= f.label t(:remember_me) %>
+      <%= bootstrap_close %>
+    <%= bootstrap_close %>
+  <% end -%>
+  <%= bootstrap_row Html::CSS_ACTIONS %>
+    <%= bootstrap_col_6 Html::CSS_LIST_ITEM %>
+      <%= f.submit t(:log_in) %>
+    <%= bootstrap_close %>
+  <%= bootstrap_close %>
+<% end %>
+
+<%= render "devise/shared/links" %>

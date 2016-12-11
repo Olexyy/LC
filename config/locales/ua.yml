@@ -24,6 +24,7 @@ ua:
   list_empty: "Список пустий"
   validation_error: "Введені дані не коректні"
   are_you_sure?: "Ви впевнені?"
+  signup_impossible: "Створення нового користувача неможливе"
 
   #CRUD
   list: "Список"
@@ -46,6 +47,7 @@ ua:
 
   #admin
   admin_menu: "Адміністративне меню"
+  admin: "Адмін"
 
   #categories
   category: "Категорія"
@@ -70,3 +72,13 @@ ua:
   web_resources: "Веб ресурси"
   new_web_resource: "Новий веб ресурс"
   web_resource_edit: "Зміна веб ресурсу"
+
+  # authorization
+  sign_out: "Вийти"
+  sign_in: "Увійти"
+  log_in: "Вхід"
+  email: "Мейл"
+  password: "Пароль"
+  remember_me: "Запам`ятати мене"
+  sign_up: "Новий користувач"
+  forgot_your_password?: "Забув пароль?"
