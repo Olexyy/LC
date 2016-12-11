@@ -1,0 +1,14 @@
+<%= bootstrap_page_header %>
+  <%= h1 t(:admin_menu) %>
+<%= bootstrap_page_header_close %>
+
+<%= bootstrap_list %>
+  <%= li link_to t(:categories), categories_path %>
+  <%= li link_to t(:subcategories), subcategories_path %>
+  <%= li link_to t(:lawsuits), lawsuits_path %>
+  <%= li link_to t(:web_resources), web_resources_path %>
+<%= bootstrap_list_close %>
+
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:home), root_path %>
+<%= bootstrap_lower_menu_close %>
