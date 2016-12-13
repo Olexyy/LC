@@ -1,0 +1,27 @@
+<%= bootstrap_grid_start 12 %>
+  <%= h1 t(:lawsuits) %>
+<%= bootstrap_grid_close %>
+<% if @categories.blank? %>
+  <%= bootstrap_grid_start 6, Html::CSS_LIST_ITEM %>
+    <%= p t(:list_empty), Html::CSS_LEAD %>
+  <%= bootstrap_grid_close %>
+<% else %>
+  <%= bootstrap_list %>
+    <% @categories.each do |c| %>
+      <%= li c.name %>
+      <%= bootstrap_list %>
+        <% c.subcategories.each do |s| %>
+          <%= li s.name %>
+          <%= bootstrap_list %>
+            <% s.lawsuits.each do |l| %>
+              <%= li l.name %>
+            <% end %>
+          <%= bootstrap_list_close %>
+        <% end %>
+      <%= bootstrap_list_close %>
+    <% end %>
+  <%= bootstrap_list_close %>
+<% end %>
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:to_home), root_path %>
+<%= bootstrap_lower_menu_close %>

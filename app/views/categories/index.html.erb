@@ -1,18 +1,14 @@
-<%= bootstrap_row %>
-  <%= bootstrap_col_12 %>
-    <%= h1 t(:categories) %>
-  <%= bootstrap_close %>
-<%= bootstrap_close %>
+<%= bootstrap_grid_start 12 %>
+  <%= h1 t(:categories) %>
+<%= bootstrap_grid_close %>
 <% if @categories.blank? %>
-  <%= bootstrap_row %>
-    <%= bootstrap_col_6 Html::CSS_LIST_ITEM %>
-      <%= p t(:list_empty), Html::CSS_LEAD %>
-    <%= bootstrap_close %>
-  <%= bootstrap_close %>
+  <%= bootstrap_grid_start 6, Html::CSS_LIST_ITEM %>
+    <%= p t(:list_empty), Html::CSS_LEAD %>
+  <%= bootstrap_grid_close %>
 <% else %>
   <%= bootstrap_list %>
     <% @categories.each do |c| %>
-       <%= li (link_to c.name, category_path(c)) %>
+      <%= li (link_to c.name, category_path(c)) %>
     <% end %>
   <%= bootstrap_list_close %>
 <% end %>

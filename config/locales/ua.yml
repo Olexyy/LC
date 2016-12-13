@@ -15,7 +15,10 @@ ua:
 
   #menu
   back: "Назад"
-  home: "На головну"
+  to_home: "На головну"
+  home: "Головна"
+  advices: "Поради"
+  about: "Про проект"
 
   #messages
   operation_failed: "Операція не була завершена"
@@ -48,6 +51,9 @@ ua:
   #admin
   admin_menu: "Адміністративне меню"
   admin: "Адмін"
+
+  #layout
+  default_title: "Портал юридичної допомоги | Головна"
 
   #categories
   category: "Категорія"

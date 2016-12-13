@@ -1,4 +1,5 @@
 class BlockFieldsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_block_field, only: [:show, :edit, :update, :destroy]
 
   # GET /block_fields

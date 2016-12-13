@@ -3,6 +3,7 @@ class WebResource < ApplicationRecord
   validates_presence_of :name
   validates_presence_of :body
   validates_presence_of :key
+  validates_uniqueness_of :key
   validates_numericality_of :weight
 
   def self.sorted

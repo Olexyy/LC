@@ -1,9 +1,7 @@
-<%= bootstrap_row %>
-  <%= bootstrap_col_12 %>
-    <%= h1 t(:new_category) %>
-  <%= bootstrap_close %>
-<%= bootstrap_close %>
-<%= render 'form', category: @category %>
+<%= bootstrap_grid_start 12 %>
+  <%= h1 t(:new_category) %>
+<%= bootstrap_grid_close %>
+<%= render 'form' %>
 <%= bootstrap_lower_menu %>
   <%= link_to t(:back), categories_path %>
 <%= bootstrap_lower_menu_close %>

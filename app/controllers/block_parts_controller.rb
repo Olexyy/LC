@@ -1,4 +1,5 @@
 class BlockPartsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_block_part, only: [:show, :edit, :update, :destroy]
 
   # GET /block_parts

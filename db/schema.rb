@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 20161211144804) do
   create_table "lawsuits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",            limit: 150,             null: false
     t.integer  "weight",                      default: 0, null: false
-    t.integer  "subcategory_id",                          null: false
-    t.integer  "web_resource_id"
+    t.integer  "subcategory_id"
+    t.integer  "web_resource_id",                         null: false
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
     t.index ["subcategory_id"], name: "index_lawsuits_on_subcategory_id", using: :btree
@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 20161211144804) do
     t.datetime "updated_at",                              null: false
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "Stores user data." do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :subcategories
   get '', to: 'home#index'
   get :penetrate, to: 'admin#index'
+  get :lawsuits_list, to: 'home#lawsuits_list'
   # devise requirement
   root to: 'home#index'
   # alter devise registration controller

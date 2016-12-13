@@ -1,4 +1,5 @@
 class TextStylesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_text_style, only: [:show, :edit, :update, :destroy]
 
   # GET /text_styles

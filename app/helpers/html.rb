@@ -46,6 +46,22 @@ module Html
     html.html_safe
   end
 
+  def bootstrap_grid_start (col_num = 6,  col_class_name = '', row_class_name = '')
+    html = bootstrap_row row_class_name
+    html += bootstrap_col col_num, col_class_name
+    html.html_safe
+  end
+
+  def bootstrap_grid_next (col_num = 6,  class_name = '')
+    html = bootstrap_close
+    html += bootstrap_col col_num, class_name
+    html.html_safe
+  end
+
+  def bootstrap_grid_close
+    bootstrap_close 2;
+  end
+
   def bootstrap_lower_menu (num = 2)
     html = bootstrap_row
     html += bootstrap_col num, CSS_LOWER_MENU

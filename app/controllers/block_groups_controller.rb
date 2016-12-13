@@ -1,4 +1,5 @@
 class BlockGroupsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_block_group, only: [:show, :edit, :update, :destroy]
 
   # GET /block_groups

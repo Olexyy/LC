@@ -11,7 +11,7 @@
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <title>Портал юридичної допомоги | Головна</title>
+  <title><%= t(:default_title) %></title>
   <!-- Custom styles -->
   <!--link rel="stylesheet" type="text/css" href="/stylesheets/styles.css" /-->
 </head>
@@ -30,12 +30,12 @@
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Головна</a></li>
-          <li><a href="#about">Позови</a></li>
-          <li><a href="#about">Поради</a></li>
-          <li><a href="#contact">Про проект</a></li>
+          <li class="<%= request.path == '/'? 'active': '' %>"><a href="/"><%= t(:home) %></a></li>
+          <li class="<%= request.path == '/lawsuits_list'? 'active': '' %>"><a href="/lawsuits_list"><%= t(:lawsuits) %></a></li>
+          <li><a href="#"><%= t(:advices) %></a></li>
+          <li><a href="#"><%= t(:about) %></a></li>
           <% if user_signed_in? %>
-            <li><a href="/penetrate"><%= t(:admin) %></a></li>
+            <li class="<%= request.path == '/penetrate'? 'active': '' %>"><a href="/penetrate"><%= t(:admin) %></a></li>
             <li> <%= link_to(t(:sign_out), destroy_user_session_path, :method => :delete) %> </li>
           <% end %>
         </ul>

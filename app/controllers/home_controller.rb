@@ -3,5 +3,8 @@ class HomeController < ApplicationController
     message = t(:lorem_ipsum)
     flash.now.notice = message
     flash.now.alert = message
-	end
+  end
+  def lawsuits_list
+    @categories = Category.sorted
+  end
 end

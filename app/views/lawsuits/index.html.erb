@@ -1,14 +1,10 @@
-<%= bootstrap_row %>
-  <%= bootstrap_col_12 %>
+<%= bootstrap_grid_start 12 %>
     <%= h1 t(:lawsuits) %>
-  <%= bootstrap_close %>
-<%= bootstrap_close %>
+<%= bootstrap_grid_close %>
 <% if @lawsuits.blank? %>
-<%= bootstrap_row %>
-  <%= bootstrap_col_6 Html::CSS_LIST_ITEM %>
+  <%= bootstrap_grid_start 6, Html::CSS_LIST_ITEM %>
     <%= p t(:list_empty), Html::CSS_LEAD %>
-  <%= bootstrap_close %>
-<%= bootstrap_close %>
+  <%= bootstrap_grid_close %>
 <% else %>
   <%= bootstrap_list %>
     <% @lawsuits.each do |c| %>
