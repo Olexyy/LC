@@ -32,8 +32,8 @@
         <ul class="nav navbar-nav">
           <li class="<%= request.path == '/'? 'active': '' %>"><a href="/"><%= t(:home) %></a></li>
           <li class="<%= request.path == '/lawsuits_list'? 'active': '' %>"><a href="/lawsuits_list"><%= t(:lawsuits) %></a></li>
-          <li><a href="#"><%= t(:advices) %></a></li>
-          <li><a href="#"><%= t(:about) %></a></li>
+          <li class="<%= request.fullpath == '/page?key=advices'? 'active': '' %>"><a href="/page?key=advices"><%= t(:advices) %></a></li>
+          <li class="<%= request.fullpath == '/page?key=about'? 'active': '' %>"><a href="/page?key=about"><%= t(:about) %></a></li>
           <% if user_signed_in? %>
             <li class="<%= request.path == '/penetrate'? 'active': '' %>"><a href="/penetrate"><%= t(:admin) %></a></li>
             <li> <%= link_to(t(:sign_out), destroy_user_session_path, :method => :delete) %> </li>

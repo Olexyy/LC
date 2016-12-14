@@ -120,8 +120,8 @@ module Html
     html.html_safe
   end
 
-  def textarea(text, class_name = '')
-    html = '<textarea class="'+class_name+'" disabled="disabled">'+text+'</textarea>'
+  def preview(text, class_name = '')
+    html = '<div class="preview '+class_name+'" disabled="disabled">'+text.html_safe+'</div>'
     html.html_safe
   end
 

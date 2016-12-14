@@ -1,0 +1,12 @@
+<% unless @page.title.blank? %>
+  <%= bootstrap_page_header %>
+    <%= h1 @page.title %>
+  <%= bootstrap_page_header_close %>
+<% end %>
+<%= bootstrap_grid_start 12 %>
+  <%= @page.body.html_safe %>
+<%= bootstrap_grid_close %>
+
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:to_home), root_path %>
+<%= bootstrap_lower_menu_close %>

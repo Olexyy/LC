@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '', to: 'home#index'
   get :penetrate, to: 'admin#index'
   get :lawsuits_list, to: 'home#lawsuits_list'
+  get :page, to: 'home#page'
   # devise requirement
   root to: 'home#index'
   # alter devise registration controller

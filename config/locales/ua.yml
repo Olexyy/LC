@@ -28,6 +28,8 @@ ua:
   validation_error: "Введені дані не коректні"
   are_you_sure?: "Ви впевнені?"
   signup_impossible: "Створення нового користувача неможливе"
+  page_not_exist: "Сторінка яку Ви шукаєте не існує (404)"
+
 
   #CRUD
   list: "Список"
@@ -35,6 +37,7 @@ ua:
   view: "Переглянути"
   edit: "Редагувати"
   delete: "Видалити"
+  preview: "Перегляд"
 
   #form fields
   name: "Назва"
@@ -42,7 +45,7 @@ ua:
   none: "Немає"
   blank: " "
   title: "Заголовок"
-  body: "Опис"
+  body: "Основна частина"
   key: "Ключ"
 
   #form buttons

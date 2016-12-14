@@ -1,9 +1,7 @@
-<%= bootstrap_row %>
-  <%= bootstrap_col_12 %>
+<%= bootstrap_grid_start 12 %>
     <%= h1 t(:new_web_resource) %>
-  <%= bootstrap_close %>
-<%= bootstrap_close %>
-<%= render 'form', web_resource: @web_resource %>
+<%= bootstrap_grid_close %>
+<%= render 'form' %>
 <%= bootstrap_lower_menu %>
   <%= link_to t(:back), web_resources_path %>
 <%= bootstrap_lower_menu_close %>
