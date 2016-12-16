@@ -22,7 +22,7 @@
   <%= bootstrap_grid_start 2 ,'', Html::CSS_FIELD %>
     <%= f.label t(:body) %>
   <%= bootstrap_grid_next 6 %>
-      <%= f.cktext_area :body %>
+      <%= f.text_area :body, id: :editor %>
   <%= bootstrap_grid_close %>
   <%= bootstrap_row Html::CSS_FIELD %>
     <%= bootstrap_col 2 %>
@@ -38,3 +38,4 @@
     <%= bootstrap_close %>
   <%= bootstrap_close %>
 <% end %>
+<%= ck_editor %>

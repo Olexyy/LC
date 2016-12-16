@@ -1,41 +1,17 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Text Styles</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Weight</th>
-      <th>Tag</th>
-      <th>Margin left</th>
-      <th>Text align</th>
-      <th>Strong</th>
-      <th>Underline</th>
-      <th>Italic</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @text_styles.each do |text_style| %>
-      <tr>
-        <td><%= text_style.name %></td>
-        <td><%= text_style.weight %></td>
-        <td><%= text_style.tag %></td>
-        <td><%= text_style.margin_left %></td>
-        <td><%= text_style.text_align %></td>
-        <td><%= text_style.strong %></td>
-        <td><%= text_style.underline %></td>
-        <td><%= text_style.italic %></td>
-        <td><%= link_to 'Show', text_style %></td>
-        <td><%= link_to 'Edit', edit_text_style_path(text_style) %></td>
-        <td><%= link_to 'Destroy', text_style, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<%= bootstrap_grid_start 12 %>
+  <%= h1 t(:text_styles) %>
+<%= bootstrap_grid_close %>
+<% if @text_styles.blank? %>
+    <%= bootstrap_grid_start 6, Html::CSS_LIST_ITEM %>
+    <%= p t(:list_empty), Html::CSS_LEAD %>
+    <%= bootstrap_grid_close %>
+<% else %>
+    <%= bootstrap_list %>
+    <% @text_styles.each do |i| %>
+        <%= li (link_to i.name, text_style_path(i)) %>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Text Style', new_text_style_path %>
+    <%= bootstrap_list_close %>
+<% end %>
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:new), new_text_style_path %>
+<%= bootstrap_lower_menu_close %>

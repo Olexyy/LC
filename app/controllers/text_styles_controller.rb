@@ -3,13 +3,11 @@ class TextStylesController < ApplicationController
   before_action :set_text_style, only: [:show, :edit, :update, :destroy]
 
   # GET /text_styles
-  # GET /text_styles.json
   def index
-    @text_styles = TextStyle.all
+    @text_styles = TextStyle.sorted
   end
 
   # GET /text_styles/1
-  # GET /text_styles/1.json
   def show
   end
 
@@ -29,25 +27,20 @@ class TextStylesController < ApplicationController
 
     respond_to do |format|
       if @text_style.save
-        format.html { redirect_to @text_style, notice: 'Text style was successfully created.' }
-        format.json { render :show, status: :created, location: @text_style }
+        format.html { redirect_to @text_style, notice: t(:operation_successful) }
       else
         format.html { render :new }
-        format.json { render json: @text_style.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /text_styles/1
-  # PATCH/PUT /text_styles/1.json
   def update
     respond_to do |format|
       if @text_style.update(text_style_params)
-        format.html { redirect_to @text_style, notice: 'Text style was successfully updated.' }
-        format.json { render :show, status: :ok, location: @text_style }
+        format.html { redirect_to @text_style, notice: t(:operation_successful) }
       else
         format.html { render :edit }
-        format.json { render json: @text_style.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,8 +50,7 @@ class TextStylesController < ApplicationController
   def destroy
     @text_style.destroy
     respond_to do |format|
-      format.html { redirect_to text_styles_url, notice: 'Text style was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to text_styles_url, notice: t(:operation_successful) }
     end
   end
 

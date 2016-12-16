@@ -1,6 +1,7 @@
-<h1>Editing Text Style</h1>
-
-<%= render 'form', text_style: @text_style %>
-
-<%= link_to 'Show', @text_style %> |
-<%= link_to 'Back', text_styles_path %>
+<%= bootstrap_grid_start 12 %>
+  <%= h1 t(:text_style_edit) %>
+<%= bootstrap_grid_close %>
+<%= render 'form' %>
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:back), text_styles_path %>
+<%= bootstrap_lower_menu_close %>

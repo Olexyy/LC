@@ -1,6 +1,8 @@
 ua:
 
   lorem_ipsum: "Лорем іпсум"
+  yes: "Так"
+  no: "Ні"
 
   #start page
   welcome_on_site: "Вітаємо на порталі правової допомоги!"
@@ -47,6 +49,12 @@ ua:
   title: "Заголовок"
   body: "Основна частина"
   key: "Ключ"
+  tag: "Тег"
+  margin_left: "Відступ"
+  text_align: "Вирівнювання"
+  strong: "Жирний шрифт"
+  underline: "Підкреслений шрифт"
+  italic: "Нахилений шрифт"
 
   #form buttons
   save: "Зберегти"
@@ -82,6 +90,12 @@ ua:
   new_web_resource: "Новий веб ресурс"
   web_resource_edit: "Зміна веб ресурсу"
 
+  #text styles
+  text_style: "Стиль тесту"
+  text_styles: "Стилі тексту"
+  new_text_style: "Новий стиль тексту"
+  text_style_edit: "Зміна стилю тексту"
+
   # authorization
   sign_out: "Вийти"
   sign_in: "Увійти"
@@ -91,3 +105,12 @@ ua:
   remember_me: "Запам`ятати мене"
   sign_up: "Новий користувач"
   forgot_your_password?: "Забув пароль?"
+
+  #enums
+  undefined: "Невизначено"
+  center: "Середина"
+  header: "Заголовок"
+  left: "Вліво"
+  right: "Вправо"
+  centered: "По центру"
+  justify: "Розтянуто"

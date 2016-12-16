@@ -125,4 +125,14 @@ module Html
     html.html_safe
   end
 
+  def bool_t (boolean)
+     boolean ? 'Так' : 'Ні'
+  end
+
+  def ck_editor
+    html = '<script src="/ckeditor/ckeditor.js"></script>
+            <script src="/ckeditor/config.js"></script>';
+    html.html_safe;
+  end
+
 end
