@@ -130,9 +130,7 @@ module Html
   end
 
   def ck_editor
-    html = '<script src="/ckeditor/ckeditor.js"></script>
-            <script src="/ckeditor/config.js"></script>'
-    html.html_safe
+    javascript_include_tag '/ckeditor/ckeditor.js', '/ckeditor/init.js'
   end
 
 end
