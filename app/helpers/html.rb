@@ -131,8 +131,8 @@ module Html
 
   def ck_editor
     html = '<script src="/ckeditor/ckeditor.js"></script>
-            <script src="/ckeditor/config.js"></script>';
-    html.html_safe;
+            <script src="/ckeditor/config.js"></script>'
+    html.html_safe
   end
 
 end

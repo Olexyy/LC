@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 # Users support GEMS: responders, warden, bcrypt, oem_adapter
 gem 'devise'
-
+gem 'jquery-turbolinks'
 gem 'seed_dump'
 
 group :development, :test do
