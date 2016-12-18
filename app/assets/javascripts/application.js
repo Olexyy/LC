@@ -15,6 +15,7 @@
 //= require jquery.turbolinks
 //= require cable.js
 //= require bootstrap.min.js
-// require_tree .
+//= require ckeditor/ckeditor
+//= require_tree .
 //= require turbolinks
 

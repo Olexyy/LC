@@ -130,7 +130,7 @@ module Html
   end
 
   def ck_editor
-    javascript_include_tag '/ckeditor/ckeditor.js', '/ckeditor/init.js'
+    javascript_include_tag 'ckeditor/ckeditor.js', 'ckeditor/init.js'
   end
 
 end
