@@ -1,1 +1,0 @@
-json.partial! "block_fields/block_field", block_field: @block_field

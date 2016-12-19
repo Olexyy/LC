@@ -3,13 +3,11 @@ class BlocksController < ApplicationController
   before_action :set_block, only: [:show, :edit, :update, :destroy]
 
   # GET /blocks
-  # GET /blocks.json
   def index
     @blocks = Block.all
   end
 
   # GET /blocks/1
-  # GET /blocks/1.json
   def show
   end
 
@@ -23,42 +21,34 @@ class BlocksController < ApplicationController
   end
 
   # POST /blocks
-  # POST /blocks.json
   def create
     @block = Block.new(block_params)
 
     respond_to do |format|
       if @block.save
-        format.html { redirect_to @block, notice: 'Block was successfully created.' }
-        format.json { render :show, status: :created, location: @block }
+        format.html { redirect_to @block, notice: t(:operation_successful) }
       else
         format.html { render :new }
-        format.json { render json: @block.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /blocks/1
-  # PATCH/PUT /blocks/1.json
   def update
     respond_to do |format|
       if @block.update(block_params)
-        format.html { redirect_to @block, notice: 'Block was successfully updated.' }
-        format.json { render :show, status: :ok, location: @block }
+        format.html { redirect_to @block, notice: t(:operation_successful) }
       else
         format.html { render :edit }
-        format.json { render json: @block.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /blocks/1
-  # DELETE /blocks/1.json
   def destroy
     @block.destroy
     respond_to do |format|
-      format.html { redirect_to blocks_url, notice: 'Block was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to blocks_url, notice: t(:operation_successful) }
     end
   end
 
@@ -70,6 +60,6 @@ class BlocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def block_params
-      params.require(:block).permit(:name, :weight, :include_type, :content_type, :block_field_id, :field_group_id)
+      params.require(:block).permit(:name, :weight, :include_type, :block_field_id, :block_group_id)
     end
 end

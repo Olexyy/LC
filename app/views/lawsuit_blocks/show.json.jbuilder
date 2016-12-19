@@ -1,1 +1,0 @@
-json.partial! "lawsuit_blocks/lawsuit_block", lawsuit_block: @lawsuit_block

@@ -49,12 +49,8 @@ ua:
   title: "Заголовок"
   body: "Основна частина"
   key: "Ключ"
-  tag: "Тег"
-  margin_left: "Відступ"
-  text_align: "Вирівнювання"
-  strong: "Жирний шрифт"
-  underline: "Підкреслений шрифт"
-  italic: "Нахилений шрифт"
+  include_type: "Тип підключення"
+
 
   #form buttons
   save: "Зберегти"
@@ -90,11 +86,23 @@ ua:
   new_web_resource: "Новий веб ресурс"
   web_resource_edit: "Зміна веб ресурсу"
 
-  #text styles
-  text_style: "Стиль тесту"
-  text_styles: "Стилі тексту"
-  new_text_style: "Новий стиль тексту"
-  text_style_edit: "Зміна стилю тексту"
+  #block groups
+  block_group: "Група блоків"
+  block_groups: "Групи блоків"
+  new_block_group: "Нова група блоків"
+  block_group_edit: "Зміна групи блоків"
+
+  #blocks
+  block: "Блок"
+  blocks: "Блоки"
+  new_block: "Новий блок"
+  block_edit: "Зміна блоку"
+
+  #block fields
+  block_field: "Поле блоку"
+  block_fields: "Поля блоків"
+  new_block_field: "Нове поле блоку"
+  block_field_edit: "Зміна поля блоку"
 
   # authorization
   sign_out: "Вийти"
@@ -107,10 +115,6 @@ ua:
   forgot_your_password?: "Забув пароль?"
 
   #enums
-  undefined: "Невизначено"
-  center: "Середина"
-  header: "Заголовок"
-  left: "Вліво"
-  right: "Вправо"
-  centered: "По центру"
-  justify: "Розтянуто"
+  automatic: "Автоматичне"
+  conditional: "Під умовою"
+

@@ -1,0 +1,27 @@
+<%= form_for(block_field_block_part) do |f| %>
+  <% if block_field_block_part.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(block_field_block_part.errors.count, "error") %> prohibited this block_field_block_part from being saved:</h2>
+
+      <ul>
+      <% block_field_block_part.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :block_field_id %>
+    <%= f.text_field :block_field_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :block_part_id %>
+    <%= f.text_field :block_part_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

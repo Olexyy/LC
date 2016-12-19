@@ -4,7 +4,6 @@ class CreateBlockParts < ActiveRecord::Migration[5.0]
       t.string :name, :limit => 150, :null => false
       t.text :text, :null => false
       t.integer :weight, :null => false, :default => 0
-      t.references :text_style, foreign_key: true, :null => false
       t.references :block, foreign_key: true, :null => false
 
       t.timestamps

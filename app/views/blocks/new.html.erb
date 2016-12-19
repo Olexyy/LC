@@ -1,5 +1,7 @@
-<h1>New Block</h1>
-
-<%= render 'form', block: @block %>
-
-<%= link_to 'Back', blocks_path %>
+<%= bootstrap_grid_start 12 %>
+    <%= h1 t(:new_block) %>
+<%= bootstrap_grid_close %>
+<%= render 'form' %>
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:back), blocks_path %>
+<%= bootstrap_lower_menu_close %>

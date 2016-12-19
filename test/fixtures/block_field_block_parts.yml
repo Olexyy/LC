@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  block_field: one
+  block_part: one
+
+two:
+  block_field: two
+  block_part: two

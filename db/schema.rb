@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212231512) do
+ActiveRecord::Schema.define(version: 20161219121140) do
+
+  create_table "block_field_block_parts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "block_field_id"
+    t.integer  "block_part_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["block_field_id"], name: "index_block_field_block_parts_on_block_field_id", using: :btree
+    t.index ["block_part_id"], name: "index_block_field_block_parts_on_block_part_id", using: :btree
+  end
 
   create_table "block_fields", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       limit: 150,             null: false
@@ -30,24 +39,21 @@ ActiveRecord::Schema.define(version: 20161212231512) do
   end
 
   create_table "block_parts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",          limit: 150,               null: false
-    t.text     "text",          limit: 65535,             null: false
-    t.integer  "weight",                      default: 0, null: false
-    t.integer  "text_style_id",                           null: false
-    t.integer  "block_id",                                null: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.string   "name",       limit: 150,               null: false
+    t.text     "text",       limit: 65535,             null: false
+    t.integer  "weight",                   default: 0, null: false
+    t.integer  "block_id",                             null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.index ["block_id"], name: "index_block_parts_on_block_id", using: :btree
-    t.index ["text_style_id"], name: "index_block_parts_on_text_style_id", using: :btree
   end
 
   create_table "blocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",           limit: 150,             null: false
     t.integer  "weight",                     default: 0, null: false
-    t.integer  "include_type",               default: 0, null: false
-    t.integer  "content_type",               default: 0, null: false
-    t.integer  "block_field_id",             default: 0
     t.integer  "block_group_id",                         null: false
+    t.integer  "include_type",               default: 0, null: false
+    t.integer  "block_field_id"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.index ["block_field_id"], name: "index_blocks_on_block_field_id", using: :btree
@@ -91,20 +97,7 @@ ActiveRecord::Schema.define(version: 20161212231512) do
     t.index ["category_id"], name: "index_subcategories_on_category_id", using: :btree
   end
 
-  create_table "text_styles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",        limit: 150,                 null: false
-    t.integer  "weight",                  default: 0,     null: false
-    t.integer  "tag",                     default: 0,     null: false
-    t.integer  "margin_left",             default: 0,     null: false
-    t.integer  "text_align",              default: 0,     null: false
-    t.boolean  "strong",                  default: false, null: false
-    t.boolean  "underline",               default: false, null: false
-    t.boolean  "italic",                  default: false, null: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-  end
-
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "Stores user data." do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -131,8 +124,9 @@ ActiveRecord::Schema.define(version: 20161212231512) do
     t.datetime "updated_at",                           null: false
   end
 
+  add_foreign_key "block_field_block_parts", "block_fields"
+  add_foreign_key "block_field_block_parts", "block_parts"
   add_foreign_key "block_parts", "blocks"
-  add_foreign_key "block_parts", "text_styles"
   add_foreign_key "blocks", "block_fields"
   add_foreign_key "blocks", "block_groups"
   add_foreign_key "lawsuit_blocks", "blocks"

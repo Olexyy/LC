@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Block Field Block Parts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Block field</th>
+      <th>Block part</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @block_field_block_parts.each do |block_field_block_part| %>
+      <tr>
+        <td><%= block_field_block_part.block_field %></td>
+        <td><%= block_field_block_part.block_part %></td>
+        <td><%= link_to 'Show', block_field_block_part %></td>
+        <td><%= link_to 'Edit', edit_block_field_block_part_path(block_field_block_part) %></td>
+        <td><%= link_to 'Destroy', block_field_block_part, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Block Field Block Part', new_block_field_block_part_path %>

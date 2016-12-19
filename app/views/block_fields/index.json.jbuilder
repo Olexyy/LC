@@ -1,1 +1,0 @@
-json.array! @block_fields, partial: 'block_fields/block_field', as: :block_field

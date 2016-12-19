@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TextStyleTest < ActiveSupport::TestCase
+class BlockFieldBlockPartTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
