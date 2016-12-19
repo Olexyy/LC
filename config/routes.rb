@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   resources :block_field_block_parts
-  resources :lawsuit_blocks
   resources :block_parts
   resources :blocks
   resources :block_groups
@@ -10,6 +9,8 @@ Rails.application.routes.draw do
   resources :web_resources
   resources :categories
   resources :subcategories
+  #resources :lawsuit_blocks
+  get 'lawsuit_blocks/:id', to: 'lawsuit_blocks#index'
   get '', to: 'home#index'
   get :penetrate, to: 'admin#index'
   get :lawsuits_list, to: 'home#lawsuits_list'
@@ -18,5 +19,6 @@ Rails.application.routes.draw do
   root to: 'home#index'
   # alter devise registration controller
   devise_for :users , controllers: { registrations: 'users/registrations' }
-  # get ':controller(/:action(/:id))'
+  #get ':controller(/:action(/:id))'
+
 end

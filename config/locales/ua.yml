@@ -111,6 +111,9 @@ ua:
   new_block_part: "Нова частина блоку"
   block_part_edit: "Зміна частини блоку"
 
+  #lawsuit blocks
+  lawsuit_blocks: "Блоки позову"
+
   # authorization
   sign_out: "Вийти"
   sign_in: "Увійти"

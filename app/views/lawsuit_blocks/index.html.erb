@@ -1,31 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Lawsuit Blocks</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Weight</th>
-      <th>Lawsuit</th>
-      <th>Block</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @lawsuit_blocks.each do |lawsuit_block| %>
-      <tr>
-        <td><%= lawsuit_block.weight %></td>
-        <td><%= lawsuit_block.lawsuit %></td>
-        <td><%= lawsuit_block.block %></td>
-        <td><%= link_to 'Show', lawsuit_block %></td>
-        <td><%= link_to 'Edit', edit_lawsuit_block_path(lawsuit_block) %></td>
-        <td><%= link_to 'Destroy', lawsuit_block, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<%= bootstrap_grid_start 12 %>
+  <%= h1 t(:lawsuit_blocks) %>
+<%= bootstrap_grid_close %>
+<%= bootstrap_grid_start 6 %>
+  <% if @lawsuit_blocks.blank? %>
+    <%= p t(:list_empty), Html::CSS_LEAD %>
+  <% else %>
+    <%= bootstrap_list %>
+      <% @lawsuit_blocks.each do |lb| %>
+        <%= li lb.block.name %>
+      <% end %>
+    <%= bootstrap_list_close %>
+  <% end %>
+<%= bootstrap_grid_next 6 %>
+  <%= bootstrap_list %>
+    <% @categories.each do |c| %>
+      <%= li c.name %>
+      <%= bootstrap_list %>
+      <% c.subcategories.each do |s| %>
+        <%= li s.name %>
+        <%= bootstrap_list %>
+        <% s.lawsuits.each do |l| %>
+            <%= li l.name %>
+        <% end %>
+        <%= bootstrap_list_close %>
+      <% end %>
+      <%= bootstrap_list_close %>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Lawsuit Block', new_lawsuit_block_path %>
+  <%= bootstrap_list_close %>
+<%= bootstrap_grid_close %>
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:back), lawsuits_path %>
+<%= bootstrap_lower_menu_close %>

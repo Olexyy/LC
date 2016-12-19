@@ -1,13 +1,13 @@
 class LawsuitBlocksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_lawsuit_block, only: [:show, :edit, :update, :destroy]
+  #before_action :set_lawsuit_block, only: [:show, :edit, :update, :destroy]
 
-  # GET /lawsuit_blocks
-  # GET /lawsuit_blocks.json
+  # GET /lawsuit_blocks/1
   def index
-    @lawsuit_blocks = LawsuitBlock.all
+    @lawsuit_blocks = LawsuitBlock.sorted(params[:id])
+    @categories = Category.sorted
   end
-
+=begin
   # GET /lawsuit_blocks/1
   # GET /lawsuit_blocks/1.json
   def show
@@ -61,15 +61,15 @@ class LawsuitBlocksController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+=end
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_lawsuit_block
-      @lawsuit_block = LawsuitBlock.find(params[:id])
-    end
+    #def set_lawsuit_block
+      #@lawsuit_block = LawsuitBlock.find(params[:id])
+    #end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def lawsuit_block_params
-      params.require(:lawsuit_block).permit(:weight, :lawsuit_id, :block_id)
-    end
+    #def lawsuit_block_params
+      #params.require(:lawsuit_block).permit(:weight, :lawsuit_id, :block_id)
+    #end
 end
