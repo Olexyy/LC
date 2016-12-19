@@ -50,6 +50,7 @@ ua:
   body: "Основна частина"
   key: "Ключ"
   include_type: "Тип підключення"
+  text: "Текст"
 
 
   #form buttons
@@ -103,6 +104,12 @@ ua:
   block_fields: "Поля блоків"
   new_block_field: "Нове поле блоку"
   block_field_edit: "Зміна поля блоку"
+
+  #block parts
+  block_part: "Частина блоку"
+  block_parts: "Частини блоків"
+  new_block_part: "Нова частина блоку"
+  block_part_edit: "Зміна частини блоку"
 
   # authorization
   sign_out: "Вийти"

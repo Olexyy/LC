@@ -1,12 +1,11 @@
 class Block < ApplicationRecord
   include ActiveModel::Validations
 
-  belongs_to :block_group
   validates_presence_of :name
   validates_numericality_of :weight
   validate :conditional_validation
 
-  # validates_numericality_of :include_type // should validate automatically
+  belongs_to :block_group
   #we should take in account this ref + belonging to lawsuit
   belongs_to :block_field, optional: true
   has_many :lawsuit_blocks
@@ -21,6 +20,11 @@ class Block < ApplicationRecord
 
   def self.sorted
     self.all.sort_by { |i| i.weight }
+  end
+
+  def self.select_list
+    list = self.sorted
+    list.collect { |i| [ i.name, i.id ] }
   end
 
   def conditional_validation

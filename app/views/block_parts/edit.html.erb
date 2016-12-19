@@ -1,6 +1,7 @@
-<h1>Editing Block Part</h1>
-
-<%= render 'form', block_part: @block_part %>
-
-<%= link_to 'Show', @block_part %> |
-<%= link_to 'Back', block_parts_path %>
+<%= bootstrap_grid_start 12 %>
+  <%= h1 t(:block_part_edit) %>
+<%= bootstrap_grid_close %>
+<%= render 'form' %>
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:back), block_parts_path %>
+<%= bootstrap_lower_menu_close %>
