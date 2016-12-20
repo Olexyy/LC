@@ -2,6 +2,7 @@
   <%= h1 t(:lawsuit_blocks) %>
 <%= bootstrap_grid_close %>
 <%= bootstrap_grid_start 6 %>
+<div id="<%= Html::CSS_SELECTED_ID %>">
   <% if @lawsuit_blocks.blank? %>
     <%= p t(:list_empty), Html::CSS_LEAD %>
   <% else %>
@@ -11,23 +12,50 @@
       <% end %>
     <%= bootstrap_list_close %>
   <% end %>
+</div>
 <%= bootstrap_grid_next 6 %>
-  <%= bootstrap_list %>
+<div id="<%= Html::CSS_LIST_ID %>">
+  <%= bootstrap_list  %>
     <% @categories.each do |c| %>
       <%= li c.name %>
       <%= bootstrap_list %>
       <% c.subcategories.each do |s| %>
         <%= li s.name %>
-        <%= bootstrap_list %>
-        <% s.lawsuits.each do |l| %>
-            <%= li l.name %>
-        <% end %>
+        <%= bootstrap_list 'collapsible2' %>
+          <% s.lawsuits.each do |l| %>
+             <%= li l.name %>
+          <% end %>
         <%= bootstrap_list_close %>
       <% end %>
       <%= bootstrap_list_close %>
     <% end %>
   <%= bootstrap_list_close %>
+</div>
+<div id="listDiv">
+  <ul class="toggle1" id="list">
+    <% if @categories.blank? %>
+      <%= p t(:list_empty), Html::CSS_LEAD %>
+    <% else %>
+    <% @categories.each do |c| %>
+    <li> <%= c.name %>
+      <ul class="collapsible1 toggle2">
+        <% c.subcategories.each do |s| %>
+        <li> <%= s.name %>
+          <ul class="collapsible2">
+            <% s.lawsuits.each do |l| %>
+              <li draggable="true" id="<%  %>">@block.BlockName </li>
+            <% end %>
+          </ul>
+        </li>
+        <% end %>
+      </ul>
+    </li>
+    }
+    <% end %>
+  </ul>
+</div>
 <%= bootstrap_grid_close %>
+<div id="lawsuit_id_token" lawsuitId="<%= @lawsuit_id %>" hidden="hidden"></div>
 <%= bootstrap_lower_menu %>
   <%= link_to t(:back), lawsuits_path %>
 <%= bootstrap_lower_menu_close %>

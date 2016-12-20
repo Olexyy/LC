@@ -1,0 +1,17 @@
+<%= bootstrap_grid_start 12 %>
+  <%= h1 t(:block_subgroups) %>
+<%= bootstrap_grid_close %>
+<% if @block_subgroups.blank? %>
+  <%= bootstrap_grid_start 6, Html::CSS_LIST_ITEM %>
+    <%= p t(:list_empty), Html::CSS_LEAD %>
+  <%= bootstrap_grid_close %>
+<% else %>
+  <%= bootstrap_list %>
+    <% @block_subgroups.each do |c| %>
+        <%= li (link_to c.name, block_subgroup_path(c)) %>
+    <% end %>
+  <%= bootstrap_list_close %>
+<% end %>
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:new), new_block_subgroup_path %>
+<%= bootstrap_lower_menu_close %>

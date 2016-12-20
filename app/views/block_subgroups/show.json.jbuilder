@@ -1,0 +1,1 @@
+json.partial! "block_subgroups/block_subgroup", block_subgroup: @block_subgroup

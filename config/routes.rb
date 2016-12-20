@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :block_subgroups
   resources :block_field_block_parts
   resources :block_parts
   resources :blocks

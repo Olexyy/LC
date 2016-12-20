@@ -16,6 +16,7 @@
 //= require cable.js
 //= require bootstrap.min.js
 //= require ckeditor/init
-//= require_tree .
-//= require turbolinks
+//= require drag-drop.js
+// require_tree .
+// require turbolinks
 

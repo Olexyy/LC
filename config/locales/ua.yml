@@ -93,6 +93,12 @@ ua:
   new_block_group: "Нова група блоків"
   block_group_edit: "Зміна групи блоків"
 
+  #block subgroups
+  block_subgroup: "Підгрупа блоків"
+  block_subgroups: "Підгрупи блоків"
+  new_block_subgroup: "Нова підгрупа блоків"
+  block_subgroup_edit: "Зміна підгрупи блоків"
+
   #blocks
   block: "Блок"
   blocks: "Блоки"

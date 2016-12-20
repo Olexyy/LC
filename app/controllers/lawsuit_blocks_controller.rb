@@ -4,7 +4,8 @@ class LawsuitBlocksController < ApplicationController
 
   # GET /lawsuit_blocks/1
   def index
-    @lawsuit_blocks = LawsuitBlock.sorted(params[:id])
+    @lawsuit_id = params[:id]
+    @lawsuit_blocks = LawsuitBlock.sorted(@lawsuit_id)
     @categories = Category.sorted
   end
 =begin

@@ -5,7 +5,7 @@ class Block < ApplicationRecord
   validates_numericality_of :weight
   validate :conditional_validation
 
-  belongs_to :block_group
+  belongs_to :block_subgroup
   #we should take in account this ref + belonging to lawsuit
   belongs_to :block_field, optional: true
   has_many :lawsuit_blocks

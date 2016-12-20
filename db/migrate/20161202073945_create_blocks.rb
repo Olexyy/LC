@@ -3,7 +3,7 @@ class CreateBlocks < ActiveRecord::Migration[5.0]
     create_table :blocks do |t|
       t.string :name, :limit => 150, :null => false
       t.integer :weight, :null => false, :default => 0
-      t.references :block_group, foreign_key: true, :null => false
+      t.references :block_subgroup, foreign_key: true, :null => false
       # auto / conditional
       t.integer :include_type, :null => false, :default => 0
       # what is this??? -> cont type have fields

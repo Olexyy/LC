@@ -12,6 +12,9 @@ module Html
   CSS_FIELD = 'field'
   CSS_ACTIONS = 'actions'
   CSS_SHOW = 'show'
+  CSS_COLLAPSIBLE2 = 'collapsible2'
+  CSS_SELECTED_ID = 'selectedDiv'
+  CSS_LIST_ID = 'listDiv'
 
   def bootstrap_col (num = 1, class_name = '')
     html = '<div class="col-sm-'.+num.to_s+' '+class_name+'">'
@@ -82,10 +85,10 @@ module Html
     bootstrap_close 2
   end
 
-  def bootstrap_list
-    html = bootstrap_row
-    html += bootstrap_col_12 CSS_LIST_CONTAINER
-    html += '<ul>'.html_safe
+  def bootstrap_list(ul_class = '', col_class = CSS_LIST_CONTAINER, row_class = '')
+    html = bootstrap_row row_class
+    html += bootstrap_col_12 col_class
+    html += "<ul class='#{ul_class}'>".html_safe
     html.html_safe
   end
 

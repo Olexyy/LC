@@ -1,0 +1,1 @@
+json.array! @block_subgroups, partial: 'block_subgroups/block_subgroup', as: :block_subgroup

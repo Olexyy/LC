@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219202633) do
+ActiveRecord::Schema.define(version: 20161220210846) do
 
   create_table "block_field_block_parts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "block_field_id"
@@ -48,16 +48,25 @@ ActiveRecord::Schema.define(version: 20161219202633) do
     t.index ["block_id"], name: "index_block_parts_on_block_id", using: :btree
   end
 
+  create_table "block_subgroups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "weight"
+    t.integer  "block_group_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["block_group_id"], name: "index_block_subgroups_on_block_group_id", using: :btree
+  end
+
   create_table "blocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",           limit: 150,             null: false
-    t.integer  "weight",                     default: 0, null: false
-    t.integer  "block_group_id",                         null: false
-    t.integer  "include_type",               default: 0, null: false
+    t.string   "name",              limit: 150,             null: false
+    t.integer  "weight",                        default: 0, null: false
+    t.integer  "block_subgroup_id",                         null: false
+    t.integer  "include_type",                  default: 0, null: false
     t.integer  "block_field_id"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.index ["block_field_id"], name: "index_blocks_on_block_field_id", using: :btree
-    t.index ["block_group_id"], name: "index_blocks_on_block_group_id", using: :btree
+    t.index ["block_subgroup_id"], name: "index_blocks_on_block_subgroup_id", using: :btree
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -127,8 +136,9 @@ ActiveRecord::Schema.define(version: 20161219202633) do
   add_foreign_key "block_field_block_parts", "block_fields"
   add_foreign_key "block_field_block_parts", "block_parts"
   add_foreign_key "block_parts", "blocks"
+  add_foreign_key "block_subgroups", "block_groups"
   add_foreign_key "blocks", "block_fields"
-  add_foreign_key "blocks", "block_groups"
+  add_foreign_key "blocks", "block_subgroups"
   add_foreign_key "lawsuit_blocks", "blocks"
   add_foreign_key "lawsuit_blocks", "lawsuits"
   add_foreign_key "lawsuits", "subcategories"
