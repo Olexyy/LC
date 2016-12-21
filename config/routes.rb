@@ -21,5 +21,5 @@ Rails.application.routes.draw do
   # alter devise registration controller
   devise_for :users , controllers: { registrations: 'users/registrations' }
   #get ':controller(/:action(/:id))'
-
+  match 'lawsuit_blocks/action' => 'lawsuit_blocks#action', via: :post
 end

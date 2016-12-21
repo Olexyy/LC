@@ -14,43 +14,26 @@
   <% end %>
 </div>
 <%= bootstrap_grid_next 6 %>
-<div id="<%= Html::CSS_LIST_ID %>">
-  <%= bootstrap_list  %>
-    <% @categories.each do |c| %>
-      <%= li c.name %>
-      <%= bootstrap_list %>
-      <% c.subcategories.each do |s| %>
-        <%= li s.name %>
-        <%= bootstrap_list 'collapsible2' %>
-          <% s.lawsuits.each do |l| %>
-             <%= li l.name %>
-          <% end %>
-        <%= bootstrap_list_close %>
-      <% end %>
-      <%= bootstrap_list_close %>
-    <% end %>
-  <%= bootstrap_list_close %>
-</div>
 <div id="listDiv">
   <ul class="toggle1" id="list">
-    <% if @categories.blank? %>
+    <% if @block_groups.blank? %>
       <%= p t(:list_empty), Html::CSS_LEAD %>
     <% else %>
-    <% @categories.each do |c| %>
-    <li> <%= c.name %>
-      <ul class="collapsible1 toggle2">
-        <% c.subcategories.each do |s| %>
-        <li> <%= s.name %>
-          <ul class="collapsible2">
-            <% s.lawsuits.each do |l| %>
-              <li draggable="true" id="<%  %>">@block.BlockName </li>
-            <% end %>
-          </ul>
-        </li>
-        <% end %>
-      </ul>
-    </li>
-    }
+      <% @block_groups.each do |g| %>
+      <li> <%= g.name %>
+        <ul class="collapsible1 toggle2">
+          <% g.block_subgroups.each do |s| %>
+          <li> <%= s.name %>
+            <ul class="collapsible2">
+              <% s.blocks.each do |b| %>
+                <li draggable="true" id="<%= b.id.to_s %>"><%= b.name %></li>
+              <% end %>
+            </ul>
+          </li>
+          <% end %>
+        </ul>
+      </li>
+      <% end %>
     <% end %>
   </ul>
 </div>

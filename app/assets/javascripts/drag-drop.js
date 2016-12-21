@@ -6,9 +6,9 @@
         //var listId = '#list'; // not needed
         var collapsibleClass = '.collapsible2';
         var selectedId = '#selected';
-        var UrlAll = "/LawsuitBlock/All";
-        var UrlSelected = "/LawsuitBlock/Selected";
-        var UrlAction = "/LawsuitBlock/Action";
+        var UrlAll = "lawsuit_blocks/all";
+        var UrlSelected = "lawsuit_blocks/selected";
+        var UrlAction = "/lawsuit_blocks/action";
         //loadAll();
         setCollapsibleEvents();
         //loadSelected();
@@ -56,7 +56,7 @@
                     //evt.originalEvent.dataTransfer.setData("ID", evt.target.id);
                     //evt.originalEvent.dataTransfer.setData("Location", "selected");
                     //});
-                    action(0, lawsuitId, id, 0);
+                    action('add', lawsuitId, id, 0);
                     listItems.empty();
                 }
             }
@@ -64,7 +64,7 @@
                 var sourceId = evt.originalEvent.dataTransfer.getData("ID");
                 var targetId = evt.target.id;
                 if (targetId !== null && sourceId !== null && targetId != sourceId) {
-                    action(2, lawsuitId, sourceId, targetId); // using not by name
+                    action('move', lawsuitId, sourceId, targetId); // using not by name
                     listItems.empty();
                 }
             }
@@ -76,7 +76,7 @@
                 var id = evt.originalEvent.dataTransfer.getData("ID", evt.target.id);
                 var listItems = $(selectedId);
                 //listItems.find('#' + id).remove();
-                action(1, lawsuitId, id, 0);
+                action('remove', lawsuitId, id, 0);
                 listItems.empty();
             }
         });
@@ -102,7 +102,7 @@
                 type: 'POST',
                 url: UrlAll,
                 dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
+                contentType: 'application/json; charset=utf-8'
             }).done(function (resp) {
                 if (resp.length > 0) {
                     $.each(resp, function (idx, val) {
@@ -127,7 +127,7 @@
                 url: UrlSelected,
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
-                data: '{"lawsuitId": ' + lawsuitId + '}',
+                data: '{"lawsuitId": ' + lawsuitId + '}'
             }).done(function (resp) {
                 if (resp.length > 0) {
                     $.each(resp, function (idx, val) {
@@ -144,16 +144,18 @@
             });
         }
 
-        function action(action, lawsuitId, blockId, targetBlockId) {
+        function action(type, lawsuitId, blockId, targetBlockId) {
+            var values = { type:type, lawsuitId:lawsuitId, blockId:blockId, targetBlockId:targetBlockId };
             $.ajax({
                 url: UrlAction,
                 type: 'POST',
-                data: '{ Type:' + action + ', LawsuitId:' + lawsuitId + ', BlockId:' + blockId + ', TargetBlockId:' + targetBlockId + '}',
+                data: JSON.stringify(values),
                 dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
+                contentType: 'application/json; charset=utf-8'
             }).error(function (err) {
                 alert('Error! ' + err.status);
             }).done(function (resp) {
+                alert('Ok! ' + data);
                 loadSelected();
             });
         }

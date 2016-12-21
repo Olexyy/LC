@@ -6,7 +6,11 @@ class LawsuitBlocksController < ApplicationController
   def index
     @lawsuit_id = params[:id]
     @lawsuit_blocks = LawsuitBlock.sorted(@lawsuit_id)
-    @categories = Category.sorted
+    @block_groups = BlockGroup.sorted
+  end
+  # POST /lawsuit_blocks/action
+  def action
+    render  json: process_lawsuit_block_action
   end
 =begin
   # GET /lawsuit_blocks/1
@@ -70,7 +74,14 @@ class LawsuitBlocksController < ApplicationController
     #end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    #def lawsuit_block_params
-      #params.require(:lawsuit_block).permit(:weight, :lawsuit_id, :block_id)
-    #end
+    def lawsuit_block_params
+      params.permit(:type, :lawsuitId, :blockId, :targetBlockId)
+    end
+
+    def process_lawsuit_block_action
+      data = lawsuit_block_params
+      if data[:type] == 'add'
+        new = LawsuitBlock.create(lawsuit_id: data[:lawsuitId], block_id: data[:blockId])
+      end
+    end
 end
