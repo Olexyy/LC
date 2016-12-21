@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   # alter devise registration controller
   devise_for :users , controllers: { registrations: 'users/registrations' }
+  post 'lawsuit_blocks/action', to: 'lawsuit_blocks#action'
+  post 'lawsuit_blocks/selected', to: 'lawsuit_blocks#selected'
   #get ':controller(/:action(/:id))'
-  match 'lawsuit_blocks/action' => 'lawsuit_blocks#action', via: :post
 end

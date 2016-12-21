@@ -6,12 +6,12 @@
         //var listId = '#list'; // not needed
         var collapsibleClass = '.collapsible2';
         var selectedId = '#selected';
-        var UrlAll = "lawsuit_blocks/all";
-        var UrlSelected = "lawsuit_blocks/selected";
+        var UrlAll = "/lawsuit_blocks/all";
+        var UrlSelected = "/lawsuit_blocks/selected";
         var UrlAction = "/lawsuit_blocks/action";
         //loadAll();
         setCollapsibleEvents();
-        //loadSelected();
+        loadSelected();
         //Function to set events for Drag-Drop for li items of selected lists
         function setCollapsibleEvents() {
             var lists = $(collapsibleClass);
@@ -122,16 +122,18 @@
 
         function loadSelected() {
             var items = '';
+            var lawsuit = { lawsuit_id: lawsuitId };
             $.ajax({
                 type: 'POST',
                 url: UrlSelected,
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
-                data: '{"lawsuitId": ' + lawsuitId + '}'
+                data: JSON.stringify(lawsuit)
             }).done(function (resp) {
                 if (resp.length > 0) {
-                    $.each(resp, function (idx, val) {
-                        items += '<li draggable="true" id=' + val.BlockId + '>' + val.BlockName + '</li>';
+                    $.each(resp, function (idx, el) {
+                        var a = el;
+                        items += '<li draggable="true" id=' + el.id + '>' + el.name + '</li>';
                     });
                     $(selectedId).html(items);
                     setSelectedEvents();
@@ -145,7 +147,7 @@
         }
 
         function action(type, lawsuitId, blockId, targetBlockId) {
-            var values = { type:type, lawsuitId:lawsuitId, blockId:blockId, targetBlockId:targetBlockId };
+            var values = { type:type, lawsuit_id:lawsuitId, block_id:blockId, target_blockId:targetBlockId };
             $.ajax({
                 url: UrlAction,
                 type: 'POST',
@@ -155,7 +157,6 @@
             }).error(function (err) {
                 alert('Error! ' + err.status);
             }).done(function (resp) {
-                alert('Ok! ' + data);
                 loadSelected();
             });
         }

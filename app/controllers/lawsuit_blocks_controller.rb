@@ -1,16 +1,19 @@
 class LawsuitBlocksController < ApplicationController
   before_action :authenticate_user!
-  #before_action :set_lawsuit_block, only: [:show, :edit, :update, :destroy]
 
   # GET /lawsuit_blocks/1
   def index
     @lawsuit_id = params[:id]
-    @lawsuit_blocks = LawsuitBlock.sorted(@lawsuit_id)
     @block_groups = BlockGroup.sorted
   end
   # POST /lawsuit_blocks/action
   def action
-    render  json: process_lawsuit_block_action
+    process_lawsuit_block_action
+  end
+  def selected
+    lawsuit_blocks = LawsuitBlock.sorted(params[:lawsuit_id])
+    lawsuit_blocks.collect! { |i| {id: i.block.id, name: i.block.name}  }
+    render json: lawsuit_blocks, status: :ok
   end
 =begin
   # GET /lawsuit_blocks/1
@@ -68,20 +71,15 @@ class LawsuitBlocksController < ApplicationController
   end
 =end
   private
-    # Use callbacks to share common setup or constraints between actions.
-    #def set_lawsuit_block
-      #@lawsuit_block = LawsuitBlock.find(params[:id])
-    #end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def lawsuit_block_params
-      params.permit(:type, :lawsuitId, :blockId, :targetBlockId)
+      params.permit(:type, :lawsuit_id, :block_id, :target_block_id)
     end
 
     def process_lawsuit_block_action
       data = lawsuit_block_params
       if data[:type] == 'add'
-        new = LawsuitBlock.create(lawsuit_id: data[:lawsuitId], block_id: data[:blockId])
+        LawsuitBlock.create(lawsuit_id: data[:lawsuit_id], block_id: data[:block_id])
       end
     end
 end

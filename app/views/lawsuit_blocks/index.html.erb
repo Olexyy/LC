@@ -2,17 +2,7 @@
   <%= h1 t(:lawsuit_blocks) %>
 <%= bootstrap_grid_close %>
 <%= bootstrap_grid_start 6 %>
-<div id="<%= Html::CSS_SELECTED_ID %>">
-  <% if @lawsuit_blocks.blank? %>
-    <%= p t(:list_empty), Html::CSS_LEAD %>
-  <% else %>
-    <%= bootstrap_list %>
-      <% @lawsuit_blocks.each do |lb| %>
-        <%= li lb.block.name %>
-      <% end %>
-    <%= bootstrap_list_close %>
-  <% end %>
-</div>
+<div id="selectedDiv"><ul id="selected"></ul></div>
 <%= bootstrap_grid_next 6 %>
 <div id="listDiv">
   <ul class="toggle1" id="list">
