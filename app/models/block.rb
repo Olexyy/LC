@@ -2,6 +2,7 @@ class Block < ApplicationRecord
   include ActiveModel::Validations
 
   validates_presence_of :name
+  validates_presence_of :block_subgroup_id
   validates_numericality_of :weight
   validate :conditional_validation
 

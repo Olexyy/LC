@@ -10,6 +10,7 @@ class LawsuitBlocksController < ApplicationController
   def action
     process_lawsuit_block_action
   end
+  # POST /lawsuit_blocks/selected
   def selected
     lawsuit_blocks = LawsuitBlock.sorted(params[:lawsuit_id])
     lawsuit_blocks.collect! { |i| {id: i.block.id, name: i.block.name}  }
@@ -25,8 +26,44 @@ class LawsuitBlocksController < ApplicationController
       data = lawsuit_block_params
       if data[:type] == 'add'
         LawsuitBlock.create(lawsuit_id: data[:lawsuit_id], block_id: data[:block_id])
-      elsif  data[:type] == 'remove'
+      elsif data[:type] == 'remove'
         LawsuitBlock.delete_all(lawsuit_id: data[:lawsuit_id], block_id: data[:block_id])
+      elsif data[:type] == 'move'
+        normalise_weights
+        target_weight = LawsuitBlock.where(lawsuit_id: data[:lawsuit_id], block_id: data[:target_block_id]).first.weight
+        block_weight = LawsuitBlock.where(lawsuit_id: data[:lawsuit_id], block_id: data[:block_id]).first.weight
+        down = target_weight > block_weight
+        and_next = false
+        LawsuitBlock.sorted(params[:lawsuit_id]).each_with_index do |element, index|
+          if down
+            if element.weight == block_weight
+              and_next = true
+              element.update weight: target_weight
+            elsif element.weight == target_weight
+              element.update weight: index-1
+              break
+            elsif and_next
+              element.update weight: index-1
+            end
+          else
+            if element.weight == target_weight
+              and_next = true
+              element.update weight: index+1
+            elsif element.weight == block_weight
+              element.update weight: target_weight
+              break
+            elsif and_next
+              element.update weight: index-1
+            end
+          end
+        end
       end
     end
+
+    def normalise_weights
+      LawsuitBlock.sorted(params[:lawsuit_id]).each_with_index do |element, index|
+        element.update weight: index
+      end
+    end
+
 end

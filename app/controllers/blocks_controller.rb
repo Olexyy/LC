@@ -60,6 +60,6 @@ class BlocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def block_params
-      params.require(:block).permit(:name, :weight, :include_type, :block_field_id, :block_group_id)
+      params.require(:block).permit(:name, :weight, :include_type, :block_field_id, :block_subgroup_id)
     end
 end

@@ -147,7 +147,7 @@
         }
 
         function action(type, lawsuitId, blockId, targetBlockId) {
-            var values = { type:type, lawsuit_id:lawsuitId, block_id:blockId, target_blockId:targetBlockId };
+            var values = { type:type, lawsuit_id:lawsuitId, block_id:blockId, target_block_id:targetBlockId };
             $.ajax({
                 url: UrlAction,
                 type: 'POST',
