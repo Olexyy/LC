@@ -16,6 +16,7 @@ class LawsuitBlocksController < ApplicationController
     lawsuit_blocks.collect! { |i| {id: i.block.id, name: i.block.name}  }
     render json: lawsuit_blocks, status: :ok
   end
+
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def lawsuit_block_params

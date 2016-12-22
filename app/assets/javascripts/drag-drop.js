@@ -1,15 +1,14 @@
 ﻿$(document).on ('ready page:load', function() {
-    //$('#lawsuit').load(function () {
+    if ($('#lawsuit_id_token').length) {
         var lawsuitId = $('#lawsuit_id_token').attr('lawsuitId');
         var listDivId = '#listDiv';
         var selectedDivId = '#selectedDiv';
-        //var listId = '#list'; // not needed
         var collapsibleClass = '.collapsible2';
         var selectedId = '#selected';
-        var UrlAll = "/lawsuit_blocks/all";
+
         var UrlSelected = "/lawsuit_blocks/selected";
         var UrlAction = "/lawsuit_blocks/action";
-        //loadAll();
+
         setCollapsibleEvents();
         loadSelected();
         //Function to set events for Drag-Drop for li items of selected lists
@@ -48,14 +47,6 @@
             if (location == "list") {
                 var id = evt.originalEvent.dataTransfer.getData("ID");
                 if (listItems.find('#' + id).length === 0) {
-                    //var text = evt.originalEvent.dataTransfer.getData("Text");
-                    //var li = "<li draggable='true' id=" + id + ">" + text + "</li>";
-                    //listItems.append(li);
-                    //listItems.find('#' + id).on('dragstart', function (evt) {
-                    //evt.originalEvent.dataTransfer.setData("Text", evt.target.textContent);
-                    //evt.originalEvent.dataTransfer.setData("ID", evt.target.id);
-                    //evt.originalEvent.dataTransfer.setData("Location", "selected");
-                    //});
                     action('add', lawsuitId, id, 0);
                     listItems.empty();
                 }
@@ -75,7 +66,6 @@
             if (location == "selected") {
                 var id = evt.originalEvent.dataTransfer.getData("ID", evt.target.id);
                 var listItems = $(selectedId);
-                //listItems.find('#' + id).remove();
                 action('remove', lawsuitId, id, 0);
                 listItems.empty();
             }
@@ -94,31 +84,6 @@
                 evt.preventDefault();
             });
         });
-        ///Function to load products using call to WEB API
-        // NOT USING IT FOR NOW
-        function loadAll() {
-            var items = '';
-            $.ajax({
-                type: 'POST',
-                url: UrlAll,
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8'
-            }).done(function (resp) {
-                if (resp.length > 0) {
-                    $.each(resp, function (idx, val) {
-                        items += '<li draggable="true" id=' + val.BlockId + '>' + val.BlockName + '</li>';
-                    });
-                    $(listId).html(items);
-                    setListEvents();
-                }
-                else {
-                    $(listId).html('<p> Список пустий </p>');
-                }
-                loadSelected();
-            }).error(function (err) {
-                alert('Error! ' + err.status);
-            });
-        }
 
         function loadSelected() {
             var items = '';
@@ -160,5 +125,5 @@
                 loadSelected();
             });
         }
-    //});
+    }
 });
