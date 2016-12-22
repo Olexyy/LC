@@ -3,7 +3,7 @@ class LawsuitBlocksController < ApplicationController
 
   # GET /lawsuit_blocks/1
   def index
-    @lawsuit_id = params[:id]
+    @lawsuit = Lawsuit.where(id: params[:id]).first
     @block_groups = BlockGroup.sorted
   end
   # POST /lawsuit_blocks/action

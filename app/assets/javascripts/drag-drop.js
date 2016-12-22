@@ -104,7 +104,7 @@
                     setSelectedEvents();
                 }
                 else {
-                    $(selectedId).html('<p> Список пустий </p>');
+                    $(selectedId).html('<p class="lead"> Список пустий </p>');
                 }
             }).error(function (err) {
                 alert('Error! ' + err.status);

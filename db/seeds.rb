@@ -1,7 +1,13 @@
 User.create(email: "admin@example.com", password: "Qq1111")
 
 Block.create!([
-  {name: "Тестовий блок", weight: 0, block_subgroup_id: 1, include_type: "Автоматичне", block_field_id: nil}
+  {name: "Тестовий блок1", weight: 0, block_subgroup_id: 1, include_type: "Автоматичне", block_field_id: nil}
+])
+Block.create!([
+  {name: "Тестовий блок2", weight: 0, block_subgroup_id: 1, include_type: "Автоматичне", block_field_id: nil}
+])
+Block.create!([
+    {name: "Тестовий блок3", weight: 0, block_subgroup_id: 1, include_type: "Автоматичне", block_field_id: nil}
 ])
 
 BlockPart.create!([

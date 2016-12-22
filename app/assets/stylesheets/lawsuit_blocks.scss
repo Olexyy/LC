@@ -1,3 +1,33 @@
 // Place all the styles related to the LawsuitBlocks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div.lawsuit-blocks-widget {
+  background: rgba(100,100,100,0.5);
+  color: white;
+  text-align: left;
+  ul{
+    list-style-type: decimal;
+    margin: 5px;
+  }
+  ul#selected{
+    cursor: e-resize;
+  }
+  ul#list{
+    cursor: pointer;
+  }
+  ul.collapsible2{
+    cursor: w-resize;
+  }
+  a{
+    color: white;
+
+  }
+  a:hover{
+    color: gray;
+    background: none;
+    text-decoration: none;
+  }
+  div.head{
+    text-align: center;
+  }
+}

@@ -17,6 +17,7 @@
 //= require bootstrap.min.js
 //= require ckeditor/init
 //= require drag-drop.js
+//= require toggle-onclick.js
 // require_tree .
 // require turbolinks
 

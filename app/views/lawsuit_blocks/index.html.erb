@@ -1,10 +1,11 @@
 <%= bootstrap_grid_start 12 %>
-  <%= h1 t(:lawsuit_blocks) %>
+  <%= h1 t(:lawsuit_blocks) + ': ' + @lawsuit.name %>
 <%= bootstrap_grid_close %>
-<%= bootstrap_grid_start 6 %>
-<div id="selectedDiv"><ul id="selected"></ul></div>
+<%= bootstrap_grid_start 6 , '', 'lawsuit-blocks-widget' %>
+<div id="selectedDiv"><div class="head lead"> Додані блоки </div><ul id="selected"></ul></div>
 <%= bootstrap_grid_next 6 %>
 <div id="listDiv">
+  <div class="head lead"> Існуючі блоки </div>
   <ul class="toggle1" id="list">
     <% if @block_groups.blank? %>
       <%= p t(:list_empty), Html::CSS_LEAD %>
@@ -16,7 +17,7 @@
           <li> <%= s.name %>
             <ul class="collapsible2">
               <% s.blocks.each do |b| %>
-                <li draggable="true" id="<%= b.id.to_s %>"><%= b.name %></li>
+                  <li draggable="true" id="<%= b.id.to_s %>"><a draggable="false" href="special_edit"><%= b.name %></a></li>
               <% end %>
             </ul>
           </li>
@@ -28,7 +29,8 @@
   </ul>
 </div>
 <%= bootstrap_grid_close %>
-<div id="lawsuit_id_token" lawsuitId="<%= @lawsuit_id %>" hidden="hidden"></div>
+<div id="lawsuit_id_token" lawsuitId="<%= @lawsuit.id %>" hidden="hidden"></div>
 <%= bootstrap_lower_menu %>
+  <%= link_to t(:new_block), new_block_path %>
   <%= link_to t(:back), lawsuits_path %>
 <%= bootstrap_lower_menu_close %>
