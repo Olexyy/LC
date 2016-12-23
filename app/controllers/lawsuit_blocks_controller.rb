@@ -50,7 +50,7 @@ class LawsuitBlocksController < ApplicationController
         block_weight = LawsuitBlock.where(lawsuit_id: data[:lawsuit_id], block_id: data[:block_id]).first.weight
         down = target_weight > block_weight
         and_next = false
-        LawsuitBlock.sorted(params[:lawsuit_id]).each_with_index do |element, index|
+        LawsuitBlock.of_lawsuit(params[:lawsuit_id]).each_with_index do |element, index|
           if down
             if element.weight == block_weight
               and_next = true

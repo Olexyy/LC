@@ -3,18 +3,18 @@ class LawsuitBlock < ApplicationRecord
   belongs_to :block
   validates_numericality_of :weight
 
-  def self.sorted(lawsuit_id)
+  def self.of_lawsuit(lawsuit_id)
     self.where(lawsuit_id: lawsuit_id).sort_by { |i| i.weight }
   end
 
   def self.normalise_weights(lawsuit_id)
-    self.sorted(lawsuit_id).each_with_index do |element, index|
+    self.of_lawsuit(lawsuit_id).each_with_index do |element, index|
       element.update weight: index
     end
   end
 
   def self.json_fetch(lawsuit_id)
-    lawsuit_blocks = LawsuitBlock.sorted(lawsuit_id)
+    lawsuit_blocks = LawsuitBlock.of_lawsuit(lawsuit_id)
     lawsuit_blocks.collect! { |i| {id: i.block.id, name: i.block.name}  }
   end
 
