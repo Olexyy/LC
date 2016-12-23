@@ -15,8 +15,9 @@ ActiveRecord::Schema.define(version: 20161220210846) do
   create_table "block_field_block_parts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "block_field_id"
     t.integer  "block_part_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "weight",         default: 0, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["block_field_id"], name: "index_block_field_block_parts_on_block_field_id", using: :btree
     t.index ["block_part_id"], name: "index_block_field_block_parts_on_block_part_id", using: :btree
   end
@@ -106,7 +107,7 @@ ActiveRecord::Schema.define(version: 20161220210846) do
     t.index ["category_id"], name: "index_subcategories_on_category_id", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "Stores user data." do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

@@ -17,7 +17,7 @@
           <li> <%= s.name %>
             <ul class="collapsible2">
               <% s.blocks.each do |b| %>
-                  <li draggable="true" id="<%= b.id.to_s %>"><a draggable="false" href="special_edit"><%= b.name %></a></li>
+                  <li draggable="true" id="<%= b.id.to_s %>"><a draggable="false" href="/lawsuit_blocks/<%= b.id.to_s %>/edit"><%= b.name %></a></li>
               <% end %>
             </ul>
           </li>

@@ -3,6 +3,7 @@ class CreateBlockFieldBlockParts < ActiveRecord::Migration[5.0]
     create_table :block_field_block_parts do |t|
       t.references :block_field, foreign_key: true
       t.references :block_part, foreign_key: true
+      t.integer :weight, null: false, default: 0
 
       t.timestamps
     end

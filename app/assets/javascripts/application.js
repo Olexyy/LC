@@ -18,6 +18,7 @@
 //= require ckeditor/init
 //= require drag-drop.js
 //= require toggle-onclick.js
+//= require sortable.js
 // require_tree .
 // require turbolinks
 

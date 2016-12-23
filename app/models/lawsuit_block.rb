@@ -7,4 +7,20 @@ class LawsuitBlock < ApplicationRecord
     self.where(lawsuit_id: lawsuit_id).sort_by { |i| i.weight }
   end
 
+  def self.normalise_weights(lawsuit_id)
+    self.sorted(lawsuit_id).each_with_index do |element, index|
+      element.update weight: index
+    end
+  end
+
+  def self.json_fetch(lawsuit_id)
+    lawsuit_blocks = LawsuitBlock.sorted(lawsuit_id)
+    lawsuit_blocks.collect! { |i| {id: i.block.id, name: i.block.name}  }
+  end
+
+  def self.json_fetch_parts(block_id)
+    block_parts = BlockPart.of_block block_id
+    block_parts.collect! { |i| {id: i.block.id, name: i.block.name}  }
+  end
+
 end

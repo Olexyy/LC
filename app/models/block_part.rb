@@ -17,4 +17,14 @@ class BlockPart < ApplicationRecord
     list.collect { |i| [ i.name, i.id ] }
   end
 
+  def self.of_block(block_id)
+    self.where(block_id: block_id).sort_by { |i| i.weight }
+  end
+
+  def self.normalise_weights(block_id)
+    self.of_block(block_id).each_with_index do |element, index|
+      element.update weight: index
+    end
+  end
+
 end
