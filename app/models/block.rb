@@ -36,4 +36,8 @@ class Block < ApplicationRecord
     (Block.include_types[self.include_type] === Block.include_types[I18n.t(:conditional)]) && self.block_field_id.blank?
   end
 
+  def text
+    block_parts.collect {|i| [i.text.html_safe] }.join(' ')
+  end
+
 end

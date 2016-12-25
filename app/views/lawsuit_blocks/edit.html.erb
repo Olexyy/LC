@@ -1,8 +1,8 @@
 <%= bootstrap_grid_start 12 %>
-  <%= h1 t(:block_parts) %>
+  <%= h1 @block.name %>
 <%= bootstrap_grid_close %>
 
-<%= bootstrap_grid_start 12 , '', 'block-parts-widget' %>
+<%= bootstrap_grid_start 4 , '', 'block-parts-widget' %>
 <div id="listDiv">
   <ul id="list">
     <% if @block.block_parts.blank? %>
@@ -14,6 +14,16 @@
     <% end %>
   </ul>
 </div>
+
+<%= p (lbl t(:block_subgroup)) + ': ' + @block.block_subgroup.name %>
+<%= p (lbl t(:include_type)) + ': ' + @block.include_type%>
+<% value = (@block.block_field.nil?)? t(:none) : @block.block_field.name %>
+<%= p (lbl t(:block_field)) + ': ' + value %>
+
+<%= bootstrap_grid_next 8%>
+<%= form_for(@block) do |f| %>
+  <%= f.cktext_area :text, disabled:'', ckeditor: {removeButtons:'Save,Print,Preview'} %>
+<% end %>
 <%= bootstrap_grid_close %>
 <div id="block_id_token" blockId="<%= @block.id %>" hidden="hidden"></div>
 

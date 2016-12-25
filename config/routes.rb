@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   post 'lawsuit_blocks/action', to: 'lawsuit_blocks#action'
   post 'lawsuit_blocks/selected', to: 'lawsuit_blocks#selected'
   get 'lawsuit_blocks/:id/edit', to: 'lawsuit_blocks#edit'
-  post '/lawsuit_blocks/block_parts_sort', to: 'lawsuit_blocks#block_parts_sort'
-  post '/lawsuit_blocks/block_parts_load', to: 'lawsuit_blocks#block_parts_load'
+  post 'lawsuit_blocks/block_parts_sort', to: 'lawsuit_blocks#block_parts_sort'
+  post 'lawsuit_blocks/block_parts_load', to: 'lawsuit_blocks#block_parts_load'
   #get ':controller(/:action(/:id))'
 end

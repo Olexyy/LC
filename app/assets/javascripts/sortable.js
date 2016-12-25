@@ -2,8 +2,8 @@
     var blockIdToken = '#block_id_token';
     if ($(blockIdToken).length) {
         var blockId = $(blockIdToken).attr('blockId');
-        var blockDiv = '#selectedDiv';
-        var blockUl = '#selected';
+        var blockDiv = '#listDiv';
+        var blockUl = '#list';
         var UrlBlockPartsSort = "/lawsuit_blocks/block_parts_sort";
         var UrlBlockPartsLoad = "/lawsuit_blocks/block_parts_load";
         
@@ -14,7 +14,6 @@
             //Set Drag on Each 'li' in the selected
             $.each(selected, function (idx, val) {
                 $(this).on('dragstart', function (evt) {
-                    evt.originalEvent.dataTransfer.setData('Text', evt.target.textContent);
                     evt.originalEvent.dataTransfer.setData('ID', evt.target.id);
                 });
             });
@@ -25,7 +24,7 @@
             var listItems = $(blockUl);
             var sourceId = evt.originalEvent.dataTransfer.getData('ID');
             var targetId = evt.target.id;
-            if (targetId !== null && sourceId !== null && targetId != sourceId) {
+            if (targetId !== '' && sourceId !== '' && targetId != sourceId) {
                 setWeight(blockId, sourceId, targetId);
                 listItems.empty();
             }
@@ -41,14 +40,14 @@
             var block = { block_id: blockId };
             $.ajax({
                 type: 'POST',
-                url: UrlBlockPartsSort,
+                url: UrlBlockPartsLoad,
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
                 data: JSON.stringify(block)
             }).done(function (resp) {
                 if (resp.length > 0) {
                     $.each(resp, function (idx, el) {
-                        items += '<li draggable="true" id=' + el.id + '><a draggable="false" href="/block_part/'+ el.id +'/edit">' + el.name + '</a></li>';
+                        items += '<li draggable="true" id=' + el.id + '><a draggable="false" id=' + el.id + '  href="/block_part/'+ el.id +'/edit">' + el.name + '</a></li>';
                     });
                     $(blockUl).html(items);
                     setBlockEvents();
@@ -62,9 +61,9 @@
         }
 
         function setWeight(blockId, sourceId, targetBlockId) {
-            var values = { block_id:blockId, source_block_id: sourceId, target_block_id:targetBlockId };
+            var values = { block_id: blockId, source_part_id: sourceId, target_part_id: targetBlockId };
             $.ajax({
-                url: UrlBlockPartsLoad,
+                url: UrlBlockPartsSort,
                 type: 'POST',
                 data: JSON.stringify(values),
                 dataType: 'json',

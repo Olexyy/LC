@@ -79,8 +79,8 @@ class LawsuitBlocksController < ApplicationController
   def process_block_parts_sort
     data = block_parts_params
     BlockPart.normalise_weights params[:block_id]
-    target_weight = BlockPart.where(block_id: data[:target_part_id]).first.weight
-    source_weight = BlockPart.where(block_id: data[:source_part_id]).first.weight
+    target_weight = BlockPart.where(id: data[:target_part_id]).first.weight
+    source_weight = BlockPart.where(id: data[:source_part_id]).first.weight
     down = target_weight > source_weight
     and_next = false
     BlockPart.of_block(params[:block_id]).each_with_index do |element, index|
