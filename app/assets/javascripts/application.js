@@ -13,12 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.turbolinks
+//= require ajax.js
 //= require cable.js
 //= require bootstrap.min.js
 //= require ckeditor/init
 //= require drag-drop.js
 //= require toggle-onclick.js
 //= require sortable.js
+
 // require_tree .
 // require turbolinks
 

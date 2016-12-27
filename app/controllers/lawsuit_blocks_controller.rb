@@ -1,4 +1,5 @@
 class LawsuitBlocksController < ApplicationController
+  include AJAX
   before_action :authenticate_user!
 
   # GET /lawsuit_blocks/1
@@ -21,12 +22,14 @@ class LawsuitBlocksController < ApplicationController
   end
   # POST /lawsuit_blocks/block_parts_load
   def block_parts_load
-    block_parts = LawsuitBlock.json_fetch_parts params[:block_id]
-    render json: block_parts, status: :ok
+    collection = ajax_draggable_list BlockPart.of_block(params[:block_id]), '/block_part/edit/'
+    result = ajax_command 'replace_draggable', '#list' , collection
+    render json: result, status: :ok
   end
   # POST /lawsuit_blocks/block_parts_sort
   def block_parts_sort
     process_block_parts_sort
+    render json: ajax_command('sorted'), status: :ok
   end
   private
     # Never trust parameters from the scary internet, only allow the white list through.

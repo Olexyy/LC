@@ -18,9 +18,4 @@ class LawsuitBlock < ApplicationRecord
     lawsuit_blocks.collect! { |i| {id: i.block.id, name: i.block.name}  }
   end
 
-  def self.json_fetch_parts(block_id)
-    block_parts = BlockPart.of_block block_id
-    block_parts.collect! { |i| {id: i.id, name: i.name}  }
-  end
-
 end
