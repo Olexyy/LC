@@ -1,6 +1,6 @@
 class BlockPartsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_block_part, only: [:show, :edit, :update, :destroy]
+  before_action :set_block_part, only: [:show, :edit, :edit_simple, :update_simple, :update, :destroy]
 
   # GET /block_parts
   def index
@@ -20,6 +20,11 @@ class BlockPartsController < ApplicationController
   def edit
   end
 
+  # GET /block_parts/edit/1
+  def edit_simple
+    session[:return_to] ||= request.referer
+  end
+
   # POST /block_parts
   # POST /block_parts.json
   def create
@@ -37,15 +42,23 @@ class BlockPartsController < ApplicationController
   end
 
   # PATCH/PUT /block_parts/1
-  # PATCH/PUT /block_parts/1.json
   def update
     respond_to do |format|
       if @block_part.update(block_part_params)
         format.html { redirect_to @block_part, notice: t(:operation_successful) }
-        #format.json { render :show, status: :ok, location: @block_part }
       else
         format.html { render :edit }
-        #format.json { render json: @block_part.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /block_parts/1
+  def update_simple
+    respond_to do |format|
+      if @block_part.update(block_part_params)
+        format.html { redirect_to session.delete(:return_to), notice: t(:operation_successful) }
+      else
+        format.html { render :edit }
       end
     end
   end

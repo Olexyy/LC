@@ -113,6 +113,11 @@ module Html
     html.html_safe
   end
 
+  def text_preview(text, class_name = '')
+    html = '<div disabled class="'+class_name+'">'+text+'</div>'
+    html.html_safe
+  end
+
   def li(text, class_name = '')
     html = '<li class="'+class_name+'">'+text+'</li>'
     html.html_safe

@@ -13,11 +13,9 @@ module AJAX
 
   def ajax_command (type, target = '', content = '')
     object = Hash.new
-    if type == 'replace_draggable'
-      object['command'] = type
-      object['target'] = target
-      object['content'] = content
-    end
+    object['command'] = type
+    object['target'] = target
+    object['content'] = content
     object
   end
 

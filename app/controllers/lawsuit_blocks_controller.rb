@@ -31,6 +31,12 @@ class LawsuitBlocksController < ApplicationController
     process_block_parts_sort
     render json: ajax_command('sorted'), status: :ok
   end
+  # POST /lawsuit_blocks/block_parts_text
+  def block_parts_text
+    text = Block.text(params[:block_id])
+    result = ajax_command 'replace_text', '.block-text' , text
+    render json: result, status: :ok
+  end
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def lawsuit_block_params

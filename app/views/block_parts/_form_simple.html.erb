@@ -1,0 +1,16 @@
+<%= form_for(@block_part, :url => url_for(:controller => 'block_parts', :action => 'update_simple')) do |f| %>
+  <%= render partial: Html::PATH_VALIDATION_NOTICE, locals: { form: @block_part } %>
+  <%= bootstrap_grid_start 2 ,'', Html::CSS_FIELD %>
+    <%= f.label t(:name) %>
+  <%= bootstrap_grid_next 6 %>
+    <%= f.text_field :name %>
+  <%= bootstrap_grid_close %>
+  <%= bootstrap_grid_start 2 ,'', Html::CSS_FIELD %>
+    <%= f.label t(:text) %>
+  <%= bootstrap_grid_next 6 %>
+    <%= f.cktext_area :text %>
+  <%= bootstrap_grid_close %>
+  <%= bootstrap_grid_start 6 , Html::CSS_LIST_ITEM, Html::CSS_ACTIONS %>
+    <%= f.submit t(:save) %>
+  <%= bootstrap_grid_close %>
+<% end %>

@@ -1,17 +1,9 @@
 ﻿var AJAX = {
-    command: function (type, target, content) {
-        var element = $(target);
-        if (type == 'replace_draggable') {
-            element.empty();
-            element.html(content);
-            AJAX.set_draggable_events(target)
-        }
-        if (type == 'sorted') {
-            element.empty();
-            element.html(content);
-            AJAX.set_draggable_events(target)
-        }
+    replace: function (type, target, content) {
+        $(target).empty();
+        $(target).html(content);
     },
+
     set_draggable_events: function (target) {
         var selected = $(target + ' li');
         //Set Drag on Each 'li' in the selected
@@ -44,10 +36,7 @@
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function (resp) {
-            if(handler)
-                handler(resp['command'], resp['target'], resp['content']);
-            else
-                AJAX.command(resp['command'], resp['target'], resp['content']);
+            handler(resp['command'], resp['target'], resp['content']);
         }).error(function (err) {
             alert('Error! ' + err.status);
         });

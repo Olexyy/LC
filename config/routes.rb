@@ -25,5 +25,8 @@ Rails.application.routes.draw do
   get 'lawsuit_blocks/:id/edit', to: 'lawsuit_blocks#edit'
   post 'lawsuit_blocks/block_parts_sort', to: 'lawsuit_blocks#block_parts_sort'
   post 'lawsuit_blocks/block_parts_load', to: 'lawsuit_blocks#block_parts_load'
+  post 'lawsuit_blocks/block_parts_text', to: 'lawsuit_blocks#block_parts_text'
+  get 'block_part/edit/:id', to: 'block_parts#edit_simple'
+  patch 'block_part/edit/:id', to: 'block_parts#update_simple'
   #get ':controller(/:action(/:id))'
 end
