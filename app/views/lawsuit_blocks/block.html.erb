@@ -1,0 +1,31 @@
+<%= bootstrap_grid_start 12 %>
+  <%= h1 @block.name %>
+<%= bootstrap_grid_close %>
+
+<%= bootstrap_grid_start 4 , '', 'block-parts-widget' %>
+<div id="listDiv">
+  <ul id="list">
+    <% if @block.block_parts.blank? %>
+      <%= p t(:list_empty), Html::CSS_LEAD %>
+    <% else %>
+      <% @block.block_parts.each do |p| %>
+        <li draggable="true" id="<%= p.id.to_s %>"><a draggable="false" href="/lawsuit_blocks/<%= p.id.to_s %>/edit"><%= p.name %></a></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<%= p (lbl t(:block_subgroup)) + ': ' + @block.block_subgroup.name %>
+<%= p (lbl t(:include_type)) + ': ' + @block.include_type%>
+<% value = (@block.block_field.nil?)? t(:none) : @block.block_field.name %>
+<%= p (lbl t(:block_field)) + ': ' + value %>
+
+<%= bootstrap_grid_next 8%>
+  <%= text_preview @block.text, 'block-text' %>
+<%= bootstrap_grid_close %>
+<div id="block_id_token" blockId="<%= @block.id %>" hidden="hidden"></div>
+
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:new_block_part), { controller: :block_parts, action: :new_alter, id: @block.id } %>
+  <%= link_to t(:lawsuit), { controller: :lawsuit_blocks, action: :lawsuit, id: session[:lawsuit_id] } %>
+<%= bootstrap_lower_menu_close %>

@@ -37,11 +37,13 @@ class Block < ApplicationRecord
   end
 
   def text
-    block_parts.sorted.collect {|i| [i.text.html_safe] }.join(' ')
+    block_parts = self.block_parts.sort_by { |i| i.weight }
+    block_parts.collect {|i| [i.text.html_safe] }.join(' ')
   end
 
   def self.text(block_id)
-    self.find(block_id).block_parts.sorted.collect {|i| [i.text.html_safe] }.join(' ')
+    block_parts = self.find(block_id).block_parts.sort_by { |i| i.weight }
+    block_parts.collect {|i| [i.text.html_safe] }.join(' ')
   end
 
 end

@@ -26,6 +26,15 @@ div.lawsuit-blocks-widget, block-parts-widget {
 }
 div.block-text{
   background-color: white;
-  border: solid 5px lightgrey;
-
+  border: solid 3px lightgrey;
+  border-radius: 5px;
+  min-height: 300px;
+  color: black;
+}
+div.lawsuit-text {
+  background-color: white;
+  border: solid 1px grey;
+  min-height: 300px;
+  margin: 15px 0;
+  color: black;
 }

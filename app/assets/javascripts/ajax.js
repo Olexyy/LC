@@ -10,6 +10,7 @@
         $.each(selected, function (idx, val) {
             $(this).on('dragstart', function (evt) {
                 evt.originalEvent.dataTransfer.setData('ID', evt.target.id);
+                evt.originalEvent.dataTransfer.setData('Location', 'selected');
             });
         });
     },

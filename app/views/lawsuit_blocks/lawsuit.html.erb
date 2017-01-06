@@ -17,7 +17,7 @@
           <li> <%= s.name %>
             <ul class="collapsible2">
               <% s.blocks.each do |b| %>
-                  <li draggable="true" id="<%= b.id.to_s %>"><a draggable="false" href="/lawsuit_blocks/<%= b.id.to_s %>/edit"><%= b.name %></a></li>
+                  <li draggable="true" id="<%= b.id.to_s %>"><a draggable="false" href="/lawsuit_blocks/block/<%= b.id.to_s %>"><%= b.name %></a></li>
               <% end %>
             </ul>
           </li>
@@ -29,8 +29,8 @@
   </ul>
 </div>
 <%= bootstrap_grid_close %>
-<%= bootstrap_grid_start 12 %>
-  <%= text_preview @lawsuit.text, 'block-text' %>
+<%= bootstrap_grid_start 12, '', 'lawsuit-blocks-widget'%>
+  <%= text_preview @lawsuit.text, 'lawsuit-text' %>
 <%= bootstrap_grid_close %>
 <div id="lawsuit_id_token" lawsuitId="<%= @lawsuit.id %>" hidden="hidden"></div>
 <%= bootstrap_lower_menu %>

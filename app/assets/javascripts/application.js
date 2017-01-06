@@ -17,9 +17,9 @@
 //= require cable.js
 //= require bootstrap.min.js
 //= require ckeditor/init
-//= require drag-drop.js
+//= require lawsuit-blocks-ajax.js
 //= require toggle-onclick.js
-//= require sortable.js
+//= require block-parts-ajax.js
 
 // require_tree .
 // require turbolinks
