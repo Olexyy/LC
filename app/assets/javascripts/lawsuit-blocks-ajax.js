@@ -7,8 +7,6 @@
         var collapsibleClass = '.collapsible2';
         var selectedId = '#selected';
         var ajaxUrl = '/lawsuit_blocks/ajax';
-        var UrlSelected = "/lawsuit_blocks/selected";
-        var UrlAction = "/lawsuit_blocks/action";
 
         setCollapsibleEvents();
         AJAX.post ({ command: 'list', lawsuit_id: lawsuitId }, ajaxUrl, replace);
@@ -81,9 +79,9 @@
         });
 
         function action(type, lawsuitId, blockId, targetBlockId) {
-            var values = { type:type, lawsuit_id:lawsuitId, block_id:blockId, target_block_id:targetBlockId };
+            var values = { command:type, lawsuit_id:lawsuitId, block_id:blockId, target_block_id:targetBlockId };
             $.ajax({
-                url: UrlAction,
+                url: ajaxUrl,
                 type: 'POST',
                 data: JSON.stringify(values),
                 dataType: 'json',

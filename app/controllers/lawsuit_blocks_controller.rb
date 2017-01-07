@@ -12,36 +12,28 @@ class LawsuitBlocksController < ApplicationController
   def block
     @block = Block.where(id: params[:id]).first
   end
-  # POST /lawsuit_blocks/action
-  def action
-    process_lawsuit_block_action
-  end
-  # POST /lawsuit_blocks/selected
-  def selected
-    lawsuit_blocks = LawsuitBlock.json_fetch params[:lawsuit_id]
-    render json: lawsuit_blocks, status: :ok
-  end
   # POST /lawsuit_blocks/ajax
   def ajax
     command = params[:command]
     block_parts_sort if command == 'sort'
     lawsuit_blocks_list if command == 'list'
     lawsuit_blocks_text if command == 'text'
+    process_lawsuit_block_action if command == 'add' || command == 'move' || command == 'remove'
   end
 
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def lawsuit_block_params
-      params.permit(:type, :lawsuit_id, :block_id, :target_block_id)
+      params.permit(:command, :lawsuit_id, :block_id, :target_block_id)
     end
 
     def process_lawsuit_block_action
       data = lawsuit_block_params
-      if data[:type] == 'add'
+      if data[:command] == 'add'
         LawsuitBlock.create(lawsuit_id: data[:lawsuit_id], block_id: data[:block_id])
-      elsif data[:type] == 'remove'
+      elsif data[:command] == 'remove'
         LawsuitBlock.delete_all(lawsuit_id: data[:lawsuit_id], block_id: data[:block_id])
-      elsif data[:type] == 'move'
+      elsif data[:command] == 'move'
         LawsuitBlock.normalise_weights params[:lawsuit_id]
         target_weight = LawsuitBlock.where(lawsuit_id: data[:lawsuit_id], block_id: data[:target_block_id]).first.weight
         block_weight = LawsuitBlock.where(lawsuit_id: data[:lawsuit_id], block_id: data[:block_id]).first.weight
