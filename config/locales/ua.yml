@@ -51,7 +51,8 @@ ua:
   key: "Ключ"
   include_type: "Тип підключення"
   text: "Текст"
-
+  data_type: "Тип даних"
+  marker: "Маркер"
 
   #form buttons
   save: "Зберегти"
@@ -120,7 +121,7 @@ ua:
   #lawsuit blocks
   lawsuit_blocks: "Блоки позову"
 
-  # authorization
+  #authorization
   sign_out: "Вийти"
   sign_in: "Увійти"
   log_in: "Вхід"
@@ -133,4 +134,8 @@ ua:
   #enums
   automatic: "Автоматичне"
   conditional: "Під умовою"
+  text: "Текст"
+  number: "Число"
+  money: "Гроші"
+  condition: "Питання"
 

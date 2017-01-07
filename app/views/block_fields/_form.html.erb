@@ -1,42 +1,31 @@
-<%= form_for(block_field) do |f| %>
-  <% if block_field.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(block_field.errors.count, "error") %> prohibited this block_field from being saved:</h2>
-
-      <ul>
-      <% block_field.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
+<%= form_for(@block_field) do |f| %>
+  <%= render partial: Html::PATH_VALIDATION_NOTICE, locals: { form: @block_field } %>
+  <%= bootstrap_grid_start 2 ,'', Html::CSS_FIELD %>
+    <%= f.label t(:name) %>
+  <%= bootstrap_grid_next 6 %>
     <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :text %>
-    <%= f.text_field :text %>
-  </div>
-
-  <div class="field">
-    <%= f.label :weight %>
-    <%= f.number_field :weight %>
-  </div>
-
-  <div class="field">
-    <%= f.label :data_type %>
-    <%= f.number_field :data_type %>
-  </div>
-
-  <div class="field">
-    <%= f.label :marker %>
+  <%= bootstrap_grid_close %>
+  <%= bootstrap_grid_start 2 ,'', Html::CSS_FIELD %>
+    <%= f.label t(:marker) %>
+  <%= bootstrap_grid_next 6 %>
     <%= f.text_field :marker %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= bootstrap_grid_close %>
+  <%= bootstrap_grid_start 2 ,'', Html::CSS_FIELD %>
+    <%= f.label t(:data_type) %>
+  <%= bootstrap_grid_next 6 %>
+    <%= f.select :data_type, BlockField.data_types_list %>
+  <%= bootstrap_grid_close %>
+  <%= bootstrap_grid_start 2 ,'', Html::CSS_FIELD %>
+    <%= f.label t(:text) %>
+  <%= bootstrap_grid_next 6 %>
+    <%= f.text_field :text %>
+  <%= bootstrap_grid_close %>
+  <%= bootstrap_grid_start 2 ,'', Html::CSS_FIELD %>
+    <%= f.label t(:weight) %>
+  <%= bootstrap_grid_next 6 %>
+    <%= f.number_field :weight %>
+  <%= bootstrap_grid_close %>
+  <%= bootstrap_grid_start 6 , Html::CSS_LIST_ITEM, Html::CSS_ACTIONS %>
+    <%= f.submit t(:save) %>
+  <%= bootstrap_grid_close %>
 <% end %>
