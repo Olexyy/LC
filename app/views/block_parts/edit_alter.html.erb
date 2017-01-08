@@ -2,13 +2,6 @@
   <%= h1 t(:block_part_edit) %>
 <%= bootstrap_grid_close %>
 <%= render 'form_alter' %>
-<% unless BlockField.select_list_non_conditional.blank? %>
-  <%= bootstrap_grid_start 12 %>
-    <% BlockField.select_list_non_conditional.each do |i| %>
-      <%= p i[0] %>
-    <% end %>
-  <%= bootstrap_grid_close %>
-<% end %>
 <%= bootstrap_lower_menu %>
   <%= link_to t(:delete), { controller: :block_parts, action: :destroy_alter, id: @block_part.id }, method: :delete ,  data: { confirm: t(:are_you_sure?) }  %>
   <%= link_to t(:back), :back %>

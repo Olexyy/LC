@@ -2,12 +2,10 @@ class BlockField < ApplicationRecord
   include ActiveModel::Validations
   validates_presence_of :name
   validates_presence_of :text
-<<<<<<< HEAD
+
   # todo test
   validates_uniqueness_of :marker, conditions: -> { where.not(data_type: I18n.t(:condition)) }
-  
-=======
->>>>>>> 42fd85e88b6917e3f5e3582a03ecf3f51b0fe67e
+
   validates_numericality_of :weight
   validate :conditional_validation
 
@@ -32,16 +30,13 @@ class BlockField < ApplicationRecord
     list.collect { |i| [ i.name, i.id ] }
   end
 
-  # need do for all and for conditional only
   def self.select_list_conditional
     list = self.where(data_type: I18n.t(:condition)).sort_by { |i| i.weight }
     list.collect { |i| [ i.name, i.id ] }
   end
 
-  # need do for all and for non conditional only
-  def self.select_list_non_conditional
-    list = self.where.not(data_type: I18n.t(:condition)).sort_by { |i| i.weight }
-    list.collect { |i| [ i.name, i.id ] }
+  def self.non_conditional
+    self.where.not(data_type: I18n.t(:condition)).sort_by { |i| i.weight }
   end
 
   def conditional_validation
