@@ -1,7 +1,9 @@
 class BlockField < ApplicationRecord
   validates_presence_of :name
   validates_presence_of :text
-  validates_presence_of :marker
+  # todo test
+  validates_uniqueness_of :marker, conditions: -> { where.not(data_type: I18n.t(:condition)) }
+  
   validates_numericality_of :weight
   # validates :data_type, inclusion: { in: data_types }
   # for conditional blocks! ref to block that depends on field!

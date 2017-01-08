@@ -52,6 +52,7 @@ class BlockPartsController < ApplicationController
 
     respond_to do |format|
       if @block_part.save
+        @block_part.add_fields
         format.html { redirect_to session.delete(:return_to_block_part), notice: t(:operation_successful) }
       else
         format.html { render :new_alter }
