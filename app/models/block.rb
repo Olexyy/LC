@@ -7,13 +7,14 @@ class Block < ApplicationRecord
   validate :conditional_validation
 
   belongs_to :block_subgroup
-  #we should take in account this ref + belonging to lawsuit
+  # we should take in account this ref + belonging to lawsuit
   belongs_to :block_field, optional: true
   has_many :lawsuit_blocks
   has_many :lawsuits, through: :lawsuit_blocks
   has_many :block_parts
 
   enum include_type: [I18n.t(:automatic), I18n.t(:conditional)]
+  validates :include_type, inclusion: { in: include_types }
 
   def self.include_types_list
     self.include_types.keys.to_a
@@ -33,7 +34,7 @@ class Block < ApplicationRecord
   end
 
   def conditional_fail?
-    (Block.include_types[self.include_type] === Block.include_types[I18n.t(:conditional)]) && self.block_field_id.blank?
+    self.include_type === I18n.t(:conditional) && self.block_field_id.blank?
   end
 
   def text

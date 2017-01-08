@@ -2,6 +2,13 @@
   <%= h1 t(:new_block_part) %>
 <%= bootstrap_grid_close %>
 <%= render 'form_alter' %>
+<% unless BlockField.select_list_non_conditional.blank? %>
+  <%= bootstrap_grid_start 12 %>
+    <% BlockField.select_list_non_conditional.each do |i| %>
+      <%= p i[0] %>
+    <% end %>
+  <%= bootstrap_grid_close %>
+<% end %>
 <%= bootstrap_lower_menu %>
   <%= link_to t(:back), :back %>
 <%= bootstrap_lower_menu_close %>
