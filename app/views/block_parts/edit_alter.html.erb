@@ -2,6 +2,11 @@
   <%= h1 t(:block_part_edit) %>
 <%= bootstrap_grid_close %>
 <%= render 'form_alter' %>
+<%= bootstrap_grid_start 12 %>
+<% @block_part.block_fields.each do |b| %>
+  <%= link_to b.name, '#'  %>
+<% end %>
+<%= bootstrap_grid_close %>
 <%= bootstrap_lower_menu %>
   <%= link_to t(:delete), { controller: :block_parts, action: :destroy_alter, id: @block_part.id }, method: :delete ,  data: { confirm: t(:are_you_sure?) }  %>
   <%= link_to t(:back), :back %>

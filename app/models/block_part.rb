@@ -3,7 +3,7 @@ class BlockPart < ApplicationRecord
   validates_numericality_of :weight
   validates_presence_of :text
   validates_presence_of :block
-  validate :markers
+  validate :markers_validate
 
   belongs_to :block
   has_many :block_field_block_parts
@@ -28,12 +28,12 @@ class BlockPart < ApplicationRecord
     end
   end
   
-  def markers
+  def markers_validate
     errors.add(:text, I18n.t(:field_is_required)) if markers_not_valid?
   end
   
   def markers_not_valid?
-    markers = self.get_markers
+    markers = self.markers
     markers.each do |marker|
       records = BlockField.where(marker: marker)
       #todo: more informative validation
@@ -43,27 +43,27 @@ class BlockPart < ApplicationRecord
   end
   
   def add_fields
-    markers = self.get_markers
+    markers = self.markers
     # add new ties fields -> parts
     markers.each do |marker|
       unless self.block_fields.any? {|i| i.marker == marker }
         block_field = BlockField.where(marker: marker).first
-        BlockFieldBlockPart.create(block_part_id: self.id, block_field_id: block_field.id);
+        BlockFieldBlockPart.create(block_part_id: self.id, block_field_id: block_field.id)
       end
     end
     #remove old ties fields -> markers
-    self.block_fields.each do block_field
-      unless markers.any? {|i| i.marker == block_field.marker }
-        BlockFieldBlockPart.delete_all(block_part_id: self.id, block_field_id: block_field.id);
+    self.block_fields.each do |block_field|
+      unless markers.any? {|marker| marker == block_field.marker }
+        BlockFieldBlockPart.delete_all(block_part_id: self.id, block_field_id: block_field.id)
       end
     end
   end
 
-  def get_markers
+  def markers
     # http://rubular.com/, http://stackoverflow.com/questions/80357/match-all-occurrences-of-a-regex
-    text = sanitize self.text
-    scan = text.scan(/#[\S]+/)
-    scan
+    # we must have at least one symbol after '#' which breaks by any whitespace char or '<'
+    markers = self.text.scan(/#[^<^\s]+/)
+    markers.each {|i| i.sub! '#', '' }
   end
 
 end

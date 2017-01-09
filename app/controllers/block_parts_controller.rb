@@ -75,9 +75,10 @@ class BlockPartsController < ApplicationController
   def update_alter
     respond_to do |format|
       if @block_part.update(block_part_params)
+        @block_part.add_fields
         format.html { redirect_to session.delete(:return_to_block_part), notice: t(:operation_successful) }
       else
-        format.html { render :edit }
+        format.html { render :edit_alter }
       end
     end
   end
