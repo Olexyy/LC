@@ -12,9 +12,8 @@
   <% unless BlockField.non_conditional.blank? %>
     <%= bootstrap_grid_next 3 %>
       <% BlockField.non_conditional.each do |i| %>
-        <%= link_to i.name, '#', id: i.id %>
+        <%= link_to i.name, '#', id: i.id , data: i.marker %>
       <% end %>
-    <%= bootstrap_grid_close %>
   <% end %>
   <%= bootstrap_grid_close %>
   <%= bootstrap_grid_start 6 , Html::CSS_LIST_ITEM, Html::CSS_ACTIONS %>
