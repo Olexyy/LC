@@ -61,7 +61,9 @@ class BlockPart < ApplicationRecord
 
   def get_markers
     # http://rubular.com/, http://stackoverflow.com/questions/80357/match-all-occurrences-of-a-regex
-    self.text.scan('/#[\S]+/')
+    text = sanitize self.text
+    scan = text.scan(/#[\S]+/)
+    scan
   end
 
 end
