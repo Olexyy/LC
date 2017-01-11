@@ -1,5 +1,6 @@
 class BlockField < ApplicationRecord
   include ActiveModel::Validations
+  attr_accessor :value
   validates_presence_of :name
   validates_presence_of :text
 
@@ -45,6 +46,16 @@ class BlockField < ApplicationRecord
 
   def marker_not_set?
     self.data_type != I18n.t(:condition) && self.marker.blank?
+  end
+
+  def self.fetch_and_fill(params)
+    fields = []
+    params.each do |key, value|
+      block_field = self.where(id: value[:id]).first
+      block_field.value = value[:value]
+      fields << block_field
+    end
+    fields
   end
 
 end

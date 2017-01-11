@@ -1,14 +1,13 @@
-<%= form_for(@lawsuit) do %>
+<%= form_for(@lawsuit, :url => url_for(controller: :lawsuit_blocks, action: :fields_submit)) do |l| %>
   <%= render partial: Html::PATH_VALIDATION_NOTICE, locals: { form: @lawsuit } %>
-  <%
-    fields = @lawsuit.fields
-    fields.each do |field|
-
-  %>
+  <%= l.hidden_field :id %>
+  <% @lawsuit.fields.each do |field| %>
     <%= fields_for 'fields[]', field do |f| %>
       <%= bootstrap_grid_start 2 ,'', Html::CSS_FIELD %>
         <%= f.label field.text %>
         <%= f.text_field :value %>
+        <%= f.hidden_field :id %>
+        <%= f.hidden_field :marker %>
       <%= bootstrap_grid_close %>
     <% end %>
   <% end %>

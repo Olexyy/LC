@@ -34,10 +34,14 @@ class Lawsuit < ApplicationRecord
 
   def fields
     fields = []
-    Lawsuit.blocks_sorted(self.id).each do |block|
-      fields += block.fields
-    end
+    Lawsuit.blocks_sorted(self.id).each { |block| fields += block.fields }
     fields.uniq { |i| i.marker }
+  end
+
+  def render_final_text (fields)
+    text = self.text
+    fields.each { |i| text.gsub! '#'+i.marker, i.value }
+    text
   end
 
 end

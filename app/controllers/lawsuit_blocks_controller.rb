@@ -10,11 +10,17 @@ class LawsuitBlocksController < ApplicationController
   end
   # GET /lawsuit_blocks/block/1
   def block
-    @block = Block.where(id: params[:id]).first
+    @block = Block.where(id: params.require(:id)).first
   end
   def fields
-    @lawsuit = Lawsuit.where(id: params[:id]).first
+    @lawsuit = Lawsuit.where(id: params.require(:id)).first
     @fields = @lawsuit.fields
+  end
+  # PATCH /lawsuit_blocks/fields_submit
+  def fields_submit
+    lawsuit = Lawsuit.where(id: params.require(:lawsuit)[:id]).first
+    fields = BlockField.fetch_and_fill params.require(:fields)
+    @text = lawsuit.render_final_text fields
   end
   # POST /lawsuit_blocks/ajax
   def ajax
@@ -39,33 +45,7 @@ class LawsuitBlocksController < ApplicationController
         LawsuitBlock.delete_all(lawsuit_id: data[:lawsuit_id], block_id: data[:block_id])
       elsif data[:command] == 'move'
         LawsuitBlock.normalise_weights params[:lawsuit_id]
-        target_weight = LawsuitBlock.where(lawsuit_id: data[:lawsuit_id], block_id: data[:target_block_id]).first.weight
-        block_weight = LawsuitBlock.where(lawsuit_id: data[:lawsuit_id], block_id: data[:block_id]).first.weight
-        down = target_weight > block_weight
-        and_next = false
-        LawsuitBlock.of_lawsuit(params[:lawsuit_id]).each_with_index do |element, index|
-          if down
-            if element.weight == block_weight
-              and_next = true
-              element.update weight: target_weight
-            elsif element.weight == target_weight
-              element.update weight: index-1
-              break
-            elsif and_next
-              element.update weight: index-1
-            end
-          else
-            if element.weight == target_weight
-              and_next = true
-              element.update weight: index+1
-            elsif element.weight == block_weight
-              element.update weight: target_weight
-              break
-            elsif and_next
-              element.update weight: index+1
-            end
-          end
-        end
+        LawsuitBlock.weights_sort data
       end
     end
 

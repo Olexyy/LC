@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'lawsuit_blocks/block/:id', to: 'lawsuit_blocks#block'
   post 'lawsuit_blocks/ajax', to: 'lawsuit_blocks#ajax'
   get 'lawsuit_blocks/fields/:id', to: 'lawsuit_blocks#fields'
+  patch 'lawsuit_blocks/fields_submit', to: 'lawsuit_blocks#fields_submit'
   # custom paths for block parts 'ajax', 'new', 'edit' and 'delete'
   get 'block_part/new/:id', to: 'block_parts#new_alter'
   post 'block_part/edit/:id', to: 'block_parts#create_alter'

@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 20161220210846) do
     t.integer  "weight",                 default: 0, null: false
     t.integer  "data_type",              default: 0, null: false
     t.string   "marker",     limit: 150
-    t.string   "value",      limit: 150
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end
