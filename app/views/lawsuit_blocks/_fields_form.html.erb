@@ -1,0 +1,19 @@
+<%= form_for(@lawsuit) do %>
+  <%= render partial: Html::PATH_VALIDATION_NOTICE, locals: { form: @lawsuit } %>
+  <%
+    fields = @lawsuit.fields
+    fields.each do |field|
+
+  %>
+    <%= fields_for 'fields[]', field do |f| %>
+      <%= bootstrap_grid_start 2 ,'', Html::CSS_FIELD %>
+        <%= f.label field.text %>
+        <%= f.text_field :value %>
+      <%= bootstrap_grid_close %>
+    <% end %>
+  <% end %>
+
+  <%= bootstrap_grid_start 6 , Html::CSS_LIST_ITEM, Html::CSS_ACTIONS %>
+    <%= submit_tag t(:save) %>
+  <%= bootstrap_grid_close %>
+<% end %>

@@ -1,0 +1,7 @@
+<%= bootstrap_grid_start 12 %>
+  <%= h1 t(:block_fields) %>
+<%= bootstrap_grid_close %>
+<%= render 'fields_form' %>
+<%= bootstrap_lower_menu %>
+  <%= link_to t(:back), { controller: :lawsuit_blocks, action: :lawsuit, id: @lawsuit.id } %>
+<%= bootstrap_lower_menu_close %>
