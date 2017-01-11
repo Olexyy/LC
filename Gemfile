@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # Users support GEMS: responders, warden, bcrypt, oem_adapter
 gem 'devise'
 gem 'jquery-turbolinks'
+# rake db:seed:dump
 gem 'seed_dump'
 gem 'ckeditor'
 

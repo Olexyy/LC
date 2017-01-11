@@ -47,4 +47,16 @@ class Block < ApplicationRecord
     block_parts.collect {|i| [i.text.html_safe] }.join(' ')
   end
 
+  def self.block_parts_sorted(block_id)
+    self.find(block_id).block_parts.sort_by { |i| i.weight }
+  end
+
+  def fields
+    fields = []
+    Block.block_parts_sorted(self.id).each do |block_part|
+      fields += block_part.fields
+    end
+    fields.uniq { |i| i.marker }
+  end
+
 end

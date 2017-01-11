@@ -34,6 +34,7 @@
 <%= bootstrap_grid_close %>
 <div id="lawsuit_id_token" lawsuitId="<%= @lawsuit.id %>" hidden="hidden"></div>
 <%= bootstrap_lower_menu %>
+  <%= link_to :Fields, { action: :fields, id: 1 } %>
   <%= link_to t(:new_block), new_block_path %>
   <%= link_to t(:back), lawsuits_path %>
 <%= bootstrap_lower_menu_close %>

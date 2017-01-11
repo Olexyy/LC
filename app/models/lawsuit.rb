@@ -28,7 +28,16 @@ class Lawsuit < ApplicationRecord
 
   def self.blocks_sorted(lawsuit_id)
     lawsuit_blocks = self.find(lawsuit_id).lawsuit_blocks.sort_by { |i| i.weight }
-    lawsuit_blocks.collect {|i| i.block }
+    lawsuit_blocks.collect! {|i| i.block }
+    lawsuit_blocks
+  end
+
+  def fields
+    fields = []
+    Lawsuit.blocks_sorted(self.id).each do |block|
+      fields += block.fields
+    end
+    fields.uniq { |i| i.marker }
   end
 
 end

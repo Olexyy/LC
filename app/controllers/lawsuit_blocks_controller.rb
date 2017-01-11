@@ -12,6 +12,10 @@ class LawsuitBlocksController < ApplicationController
   def block
     @block = Block.where(id: params[:id]).first
   end
+  def fields
+    @lawsuit = Lawsuit.where(id: params[:id]).first
+    @fields = @lawsuit.fields
+  end
   # POST /lawsuit_blocks/ajax
   def ajax
     command = params[:command]

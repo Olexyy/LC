@@ -33,8 +33,7 @@ class BlockPart < ApplicationRecord
   end
   
   def markers_not_valid?
-    markers = self.markers
-    markers.each do |marker|
+    self.markers.each do |marker|
       records = BlockField.where(marker: marker)
       #todo: more informative validation
       return true if records.blank?
@@ -64,6 +63,14 @@ class BlockPart < ApplicationRecord
     # we must have at least one symbol after '#' which breaks by any whitespace char or '<'
     markers = self.text.scan(/#[^<^\s]+/)
     markers.each {|i| i.sub! '#', '' }
+  end
+
+  def fields
+    fields = []
+    self.markers.each do |marker|
+      fields << BlockField.where(marker: marker).first
+    end
+    fields.uniq { |i| i.marker }
   end
 
 end

@@ -6,6 +6,7 @@ class CreateBlockFields < ActiveRecord::Migration[5.0]
       t.integer :weight, :null => false, :default => 0
       t.integer :data_type, :null => false, :default => 0
       t.string :marker, :limit => 150, :null => true
+      t.string :value, :limit => 150, :null => true
 
       t.timestamps
     end
