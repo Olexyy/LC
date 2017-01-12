@@ -4,10 +4,22 @@
   <% @lawsuit.fields.each do |field| %>
     <%= fields_for 'fields[]', field do |f| %>
       <%= bootstrap_grid_start 2 ,'', Html::CSS_FIELD %>
-        <%= f.label field.text %>
-        <%= f.text_field :value %>
-        <%= f.hidden_field :id %>
-        <%= f.hidden_field :marker %>
+        <% if field.conditional? %>
+          <%= f.label field.text %>
+          <%= f.check_box :value %>
+          <%= f.hidden_field :id %>
+          <% field.conditional_fields.each do |conditional_field| %>
+            <%= f.fields_for 'fields[]', conditional_field do |c| %>
+              <%= c.label conditional_field.text %>
+              <%= c.text_field :value %>
+              <%= c.hidden_field :id %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= f.label field.text %>
+          <%= f.text_field :value %>
+          <%= f.hidden_field :id %>
+        <% end %>
       <%= bootstrap_grid_close %>
     <% end %>
   <% end %>

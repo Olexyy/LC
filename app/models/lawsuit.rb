@@ -42,16 +42,18 @@ class Lawsuit < ApplicationRecord
   end
 
   def conditional_fields_uniq(fields)
-    markers = fields.collect { |i| !i.marker.blank? i.marker }
+    markers = fields.collect { |f| f.marker unless f.marker.blank? }
     fields.each do |i|
-      if i.conditional
-        i.conditional_fields.each.reject! { |y| markers.include? y.marker }
+      if i.conditional?
+        i.conditional_fields = i.conditional_fields.each.reject { |y| markers.include? y.marker }
       end
     end
   end
 
   def render_final_text (fields)
+    #TODO selective text
     text = self.text
+    #TODO pass recursive
     fields.each { |i| text.gsub! '#'+i.marker, i.value }
     text
   end

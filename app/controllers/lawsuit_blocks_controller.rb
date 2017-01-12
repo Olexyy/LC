@@ -1,6 +1,7 @@
 class LawsuitBlocksController < ApplicationController
   include AJAX
   before_action :authenticate_user!
+  before_action :get_lawsuit_and_fields, only: :fields_submit
 
   # GET /lawsuit_blocks/lawsuit/1
   def lawsuit
@@ -18,9 +19,7 @@ class LawsuitBlocksController < ApplicationController
   end
   # PATCH /lawsuit_blocks/fields_submit
   def fields_submit
-    lawsuit = Lawsuit.where(id: params.require(:lawsuit)[:id]).first
-    fields = BlockField.fetch_and_fill params.require(:fields)
-    @text = lawsuit.render_final_text fields
+    @text = @lawsuit.render_final_text @fields
   end
   # POST /lawsuit_blocks/ajax
   def ajax
@@ -35,6 +34,11 @@ class LawsuitBlocksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def lawsuit_block_params
       params.permit(:command, :lawsuit_id, :block_id, :target_block_id)
+    end
+
+    def get_lawsuit_and_fields
+      @lawsuit = Lawsuit.where(id: params.require(:lawsuit)[:id]).first
+      @fields = BlockField.fetch_and_fill params.require(:fields)
     end
 
     def process_lawsuit_block_action

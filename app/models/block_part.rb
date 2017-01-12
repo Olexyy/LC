@@ -60,8 +60,8 @@ class BlockPart < ApplicationRecord
 
   def markers
     # http://rubular.com/, http://stackoverflow.com/questions/80357/match-all-occurrences-of-a-regex
-    # we must have at least one symbol after '#' which breaks by any whitespace char or '<'
-    markers = self.text.scan(/#[^<^\s]+/)
+    # we must have at least one symbol after '#' which breaks by any whitespace char, '&' or '<'
+    markers = self.text.scan(/#[^<^\s^&]+/)
     markers.each {|i| i.sub! '#', '' }
   end
 

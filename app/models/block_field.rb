@@ -59,6 +59,14 @@ class BlockField < ApplicationRecord
       block_field = self.where(id: value[:id]).first
       block_field.value = value[:value]
       fields << block_field
+      if block_field.conditional?
+        value[:fields].each do |sub_key, sub_value|
+          sub_block_field = self.where(id: sub_value[:id]).first
+          sub_block_field.value = sub_value[:value]
+          block_field.conditional_fields << sub_block_field
+        end
+      end
+        fields << block_field
     end
     fields
   end

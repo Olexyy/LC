@@ -70,7 +70,7 @@ class Block < ApplicationRecord
         conditional_fields += block_part.fields
       end
       self.block_field.conditional_fields = conditional_fields
-      fields += self.block_field
+      fields << self.block_field
     end
     fields
   end
