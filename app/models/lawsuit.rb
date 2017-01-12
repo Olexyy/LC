@@ -35,7 +35,19 @@ class Lawsuit < ApplicationRecord
   def fields
     fields = []
     Lawsuit.blocks_sorted(self.id).each { |block| fields += block.fields }
-    fields.uniq { |i| i.marker }
+    fields.uniq! { |i| i.marker }
+    # remove duplicates from conditional
+    self.conditional_fields_uniq fields
+    fields
+  end
+
+  def conditional_fields_uniq(fields)
+    markers = fields.collect { |i| !i.marker.blank? i.marker }
+    fields.each do |i|
+      if i.conditional
+        i.conditional_fields.each.reject! { |y| markers.include? y.marker }
+      end
+    end
   end
 
   def render_final_text (fields)

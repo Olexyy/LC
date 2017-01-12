@@ -1,6 +1,7 @@
 class BlockField < ApplicationRecord
   include ActiveModel::Validations
   attr_accessor :value
+  attr_accessor :conditional_fields
   validates_presence_of :name
   validates_presence_of :text
 
@@ -29,6 +30,10 @@ class BlockField < ApplicationRecord
   def self.select_list
     list = self.sorted
     list.collect { |i| [ i.name, i.id ] }
+  end
+
+  def conditional?
+    self.data_type == I18n.t(:condition)
   end
 
   def self.select_list_conditional

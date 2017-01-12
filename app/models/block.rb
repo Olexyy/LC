@@ -51,12 +51,28 @@ class Block < ApplicationRecord
     self.find(block_id).block_parts.sort_by { |i| i.weight }
   end
 
+  def conditional?
+    self.include_type == I18n.t(:conditional)
+  end
+
   def fields
     fields = []
-    Block.block_parts_sorted(self.id).each do |block_part|
-      fields += block_part.fields
+    #if block is automatic
+    if not self.conditional?
+      Block.block_parts_sorted(self.id).each do |block_part|
+        fields += block_part.fields
+      end
+      fields.uniq! { |i| i.marker }
+    #if block is conditional
+    else
+      conditional_fields = []
+      Block.block_parts_sorted(self.id).each do |block_part|
+        conditional_fields += block_part.fields
+      end
+      self.block_field.conditional_fields = conditional_fields
+      fields += self.block_field
     end
-    fields.uniq { |i| i.marker }
+    fields
   end
 
 end
