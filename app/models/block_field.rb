@@ -59,13 +59,15 @@ class BlockField < ApplicationRecord
       block_field = self.where(id: value[:id]).first
       block_field.value = value[:value]
       fields << block_field
-      #we add fields with markers only on condition TODO: test
+      #we add fields with markers only on condition TODO: test -> PASS
       if block_field.conditional? && block_field.value == '1'
+        conditional_fields = []
         value[:fields].each do |sub_key, sub_value|
           sub_block_field = self.where(id: sub_value[:id]).first
           sub_block_field.value = sub_value[:value]
-          block_field.conditional_fields << sub_block_field
+          conditional_fields << sub_block_field
         end
+        block_field.conditional_fields = conditional_fields
       end
         fields << block_field
     end

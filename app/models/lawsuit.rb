@@ -61,12 +61,12 @@ class Lawsuit < ApplicationRecord
   def render_final_text (fields)
     #TODO make possible link conditional field only once
     text = self.conditional_text fields
-    #TODO pass recursive TEST
+    #TODO pass recursive TEST -> pass
     fields.each do |i|
       if not i.conditional?
         text.gsub! '#'+i.marker, i.value
       elsif i.conditional? and i.value == '1'
-        i.fields.each { |y| text.gsub! '#'+y.marker, y.value }
+        i.conditional_fields.each { |y| text.gsub! '#'+y.marker, y.value }
       end
     end
     text
