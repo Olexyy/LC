@@ -22,7 +22,6 @@ class Lawsuit < ApplicationRecord
   end
 
   def conditional_text(fields)
-    #TODO test
     lawsuit_blocks = self.lawsuit_blocks.sort_by { |i| i.weight }
     excluded_block_ids = fields.collect { |f| f.block.id if f.conditional? and f.value != '1' }
     lawsuit_blocks = lawsuit_blocks.each.reject { |y| excluded_block_ids.include? y.block.id }
@@ -59,7 +58,6 @@ class Lawsuit < ApplicationRecord
   end
 
   def render_final_text (fields)
-    #TODO make possible link conditional field only once
     text = self.conditional_text fields
     #TODO pass recursive TEST -> pass
     fields.each do |i|

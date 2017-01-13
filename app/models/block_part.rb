@@ -29,13 +29,12 @@ class BlockPart < ApplicationRecord
   end
   
   def markers_validate
-    errors.add(:text, I18n.t(:field_is_required)) if markers_not_valid?
+    self.errors.add(:marker, I18n.t(:use_only_defined_markers)) if markers_not_valid?
   end
   
   def markers_not_valid?
     self.markers.each do |marker|
       records = BlockField.where(marker: marker)
-      #todo: more informative validation
       return true if records.blank?
     end
     false

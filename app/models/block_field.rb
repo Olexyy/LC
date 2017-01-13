@@ -36,8 +36,10 @@ class BlockField < ApplicationRecord
     self.data_type == I18n.t(:condition)
   end
 
-  def self.select_list_conditional
+  def self.conditional_available_list
     list = self.where(data_type: I18n.t(:condition)).sort_by { |i| i.weight }
+    # it is possible to link conditional field only to one block
+    list.reject! { |i| not i.block.nil? }
     list.collect { |i| [ i.name, i.id ] }
   end
 

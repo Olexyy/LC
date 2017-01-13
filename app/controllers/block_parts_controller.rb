@@ -78,6 +78,7 @@ class BlockPartsController < ApplicationController
         @block_part.add_fields
         format.html { redirect_to session.delete(:return_to_block_part), notice: t(:operation_successful) }
       else
+        flash.now.alert = @block_part.errors.full_messages_for(:marker).join.sub(/Marker/, '') unless @block_part.errors.full_messages_for(:marker).blank?
         format.html { render :edit_alter }
       end
     end
