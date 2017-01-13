@@ -21,6 +21,14 @@ class Lawsuit < ApplicationRecord
     lawsuit_blocks.collect {|i| [i.block.text.html_safe] }.join(' ')
   end
 
+  def conditional_text(fields)
+    #TODO test
+    lawsuit_blocks = self.lawsuit_blocks.sort_by { |i| i.weight }
+    excluded_block_ids = fields.collect { |f| f.block.id if f.conditional? and f.value != '1' }
+    lawsuit_blocks = lawsuit_blocks.each.reject { |y| excluded_block_ids.include? y.block.id }
+    lawsuit_blocks.collect {|i| [i.block.text.html_safe] }.join(' ')
+  end
+
   def self.text(lawsuit_id)
     lawsuit_blocks = self.find(lawsuit_id).lawsuit_blocks.sort_by { |i| i.weight }
     lawsuit_blocks.collect {|i| [i.block.text.html_safe] }.join(' ')
@@ -51,10 +59,16 @@ class Lawsuit < ApplicationRecord
   end
 
   def render_final_text (fields)
-    #TODO selective text
-    text = self.text
-    #TODO pass recursive
-    fields.each { |i| text.gsub! '#'+i.marker, i.value }
+    #TODO make possible link conditional field only once
+    text = self.conditional_text fields
+    #TODO pass recursive TEST
+    fields.each do |i|
+      if not i.conditional?
+        text.gsub! '#'+i.marker, i.value
+      elsif i.conditional? and i.value == '1'
+        i.fields.each { |y| text.gsub! '#'+y.marker, y.value }
+      end
+    end
     text
   end
 

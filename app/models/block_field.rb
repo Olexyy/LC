@@ -12,7 +12,7 @@ class BlockField < ApplicationRecord
   validate :conditional_validation
 
   # for conditional blocks! ref to block that depends on field!
-  has_many :blocks
+  has_one :block
   has_many :block_field_block_parts
   has_many :block_parts, through: :block_field_block_parts
 
@@ -59,7 +59,8 @@ class BlockField < ApplicationRecord
       block_field = self.where(id: value[:id]).first
       block_field.value = value[:value]
       fields << block_field
-      if block_field.conditional?
+      #we add fields with markers only on condition TODO: test
+      if block_field.conditional? && block_field.value == '1'
         value[:fields].each do |sub_key, sub_value|
           sub_block_field = self.where(id: sub_value[:id]).first
           sub_block_field.value = sub_value[:value]
